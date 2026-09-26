@@ -58,7 +58,7 @@ export function Reviews({ vendorId }: { vendorId: number }) {
   return (
     <section className="mt-12" aria-labelledby="ulasan">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 id="ulasan" className="font-display text-2xl font-bold">Ulasan & rating</h2>
+        <h2 id="ulasan" className="font-display text-2xl font-semibold">Ulasan & rating</h2>
         {semua.length > 0 && (
           <p className="flex items-center gap-2 font-semibold">
             <Bintang n={Math.round(rata)} /> {rata.toFixed(1).replace(".", ",")} dari {semua.length} ulasan
@@ -67,22 +67,22 @@ export function Reviews({ vendorId }: { vendorId: number }) {
       </div>
 
       {sim.length > 0 && (
-        <p className="mt-3 rounded-md bg-gold/30 p-3 text-[0.9rem]">
+        <p className="mt-3 rounded-sm bg-gold/30 p-3 text-[0.9rem]">
           Ulasan bertanda <strong>Simulasi</strong> adalah contoh untuk memperlihatkan tampilan. Nama dan isinya fiktif, bukan testimoni pelanggan asli.
         </p>
       )}
 
       {semua.length === 0 ? (
-        <p className="mt-3 rounded-md border border-dashed border-ink/40 bg-card p-5 text-ink2">
+        <p className="mt-3 rounded-sm border border-dashed border-ink/40 bg-card p-5 text-ink2">
           Belum ada ulasan. Pernah memakai produk atau jasa ini? Jadilah yang pertama menulis.
         </p>
       ) : (
         <ul className="mt-4 space-y-3">
           {semua.map((u, i) => (
-            <li key={i} className="rounded-md border border-ink/25 bg-card p-4">
+            <li key={i} className="rounded-sm border border-ink/25 bg-card p-4">
               <div className="flex flex-wrap items-center gap-x-3">
                 <strong>{u.nama}</strong>
-                {u.sim && <span className="rounded-full border border-dashed border-stamp px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-stamp">Simulasi</span>}
+                {u.sim && <span className="rounded-sm border border-dashed border-stamp px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-stamp">Simulasi</span>}
                 <Bintang n={u.bintang} />
                 <span className="text-sm text-mute">{u.tgl}</span>
               </div>
@@ -92,8 +92,8 @@ export function Reviews({ vendorId }: { vendorId: number }) {
         </ul>
       )}
 
-      <form onSubmit={kirim} className="mt-6 rounded-md border-[1.5px] border-ink bg-card p-5" noValidate>
-        <h3 className="font-display text-xl font-bold">Tulis ulasan</h3>
+      <form onSubmit={kirim} className="mt-6 rounded-sm border border-ink bg-card p-5" noValidate>
+        <h3 className="font-display text-xl font-semibold">Tulis ulasan</h3>
         <p className="mt-1 text-[0.85rem] text-mute">Demo: ulasan hanya tersimpan di peramban ini. Di situs sebenarnya, ulasan memerlukan login alumni.</p>
         <div className="mt-4 grid gap-4">
           <div>
@@ -104,7 +104,7 @@ export function Reviews({ vendorId }: { vendorId: number }) {
             <legend className="mb-1 font-semibold">Penilaian</legend>
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
-                <button key={i} type="button" aria-pressed={bintang === i} aria-label={`${i} bintang`} onClick={() => setBintang(i)} className="grid h-12 w-12 place-items-center rounded-md hover:bg-gold/20">
+                <button key={i} type="button" aria-pressed={bintang === i} aria-label={`${i} bintang`} onClick={() => setBintang(i)} className="grid h-12 w-12 place-items-center rounded-sm hover:bg-gold/20">
                   <Icon name="star" size={30} className={`text-gold ${i <= bintang ? "fill-current" : ""}`} />
                 </button>
               ))}

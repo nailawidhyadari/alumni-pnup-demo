@@ -29,19 +29,19 @@ export function VendorCard({
       onMouseEnter={() => onHover?.(v.id)}
       onMouseLeave={() => onHover?.(null)}
     >
-      <div className="relative aspect-[16/10] overflow-hidden border-b-[1.5px] border-ink bg-paper2">
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-ink bg-paper2">
         <Photo v={v} sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 92vw" priority={priority} />
-        <span className="absolute left-0 top-3 border-y-[1.5px] border-r-[1.5px] border-ink bg-gold px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider">
+        <span className="absolute left-0 top-3 border-y border-r border-ink bg-ink px-2.5 py-0.5 text-paper text-[0.72rem] font-bold uppercase tracking-wider">
           {v.grup === "Perdagangan & Distribusi" ? "Distribusi" : v.grup === "Bisnis & Profesional" ? "Profesional" : v.grup}
         </span>
-        {v.baru && <span className="absolute right-3 top-3 rounded-full bg-forest px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider text-white">Baru</span>}
+        {v.baru && <span className="absolute right-3 top-3 rounded-sm bg-forest px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider text-white">Baru</span>}
         <Stamp angkatan={v.pemilik.angkatan} size={62} className="absolute -bottom-0.5 right-3 translate-y-1/3" />
       </div>
       <div className="flex flex-1 flex-col p-4 pt-5">
         <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-mute">
           No. {String(v.id).padStart(3, "0")} · {v.sub}
         </p>
-        <h3 className="font-display mt-1 text-[1.4rem] font-bold leading-tight">
+        <h3 className="font-display mt-1 text-[1.4rem] font-semibold leading-tight">
           <Link href={`/marketplace/${v.id}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:after:outline-3 focus-visible:after:outline-forest">
             {v.judul}
           </Link>

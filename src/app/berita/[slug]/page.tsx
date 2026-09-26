@@ -23,8 +23,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <article className="mx-auto max-w-3xl px-4 py-12 lg:py-16">
       <Link href="/berita" className="inline-flex items-center gap-2 font-semibold hover:underline"><Icon name="arrowleft" size={18} /> Semua berita</Link>
       <p className="kicker mt-6">{b.kategori} · {b.tanggal}</p>
-      <h1 className="font-display mt-2 text-4xl font-bold leading-[1.1] md:text-5xl">{b.judul}</h1>
-      <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-md border-2 border-ink shadow-[6px_6px_0_var(--ink)]">
+      <h1 className="font-display mt-2 text-4xl font-semibold leading-[1.1] md:text-5xl">{b.judul}</h1>
+      <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-sm border border-ink shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)]">
         <Image src={b.foto} alt="" fill sizes="48rem" className="object-cover" priority />
       </div>
       <div className="mt-8 space-y-5 text-[1.15rem] leading-[1.75]">
@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </div>
       <div className="mt-8"><ShareButton judul={b.judul} path={`/berita/${b.slug}`} /></div>
       <hr className="my-12 border-ink/30" />
-      <h2 className="font-display text-2xl font-bold">Berita lainnya</h2>
+      <h2 className="font-display text-2xl font-semibold">Berita lainnya</h2>
       <ul className="mt-4 space-y-3">
         {lain.map((x) => (
           <li key={x.slug}>

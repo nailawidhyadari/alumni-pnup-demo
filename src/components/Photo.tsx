@@ -7,7 +7,7 @@ export function Photo({ v, sizes, priority = false }: { v: Pick<Vendor, "foto" |
     return (
       <div className="absolute inset-0 grid place-items-center bg-forest text-paper" role="img" aria-label={`Foto ${v.usaha} belum tersedia`}>
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.5) 14px 15px)" }} />
-        <span className="font-display relative text-7xl font-bold italic">{inisial(v.usaha)}</span>
+        <span className="font-display relative text-7xl font-semibold italic">{inisial(v.usaha)}</span>
       </div>
     );
   }

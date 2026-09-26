@@ -99,7 +99,7 @@ export default function MapView({
     <div
       ref={el}
       style={{ height }}
-      className="w-full overflow-hidden rounded-md border-[1.5px] border-ink"
+      className="w-full overflow-hidden rounded-sm border border-ink"
       role="application"
       aria-label="Peta lokasi usaha alumni"
     />

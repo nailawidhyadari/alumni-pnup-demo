@@ -15,7 +15,7 @@ export function FavButton({ id, nama, compact = false }: { id: number; nama: str
         toggleFav(id);
         toast(on ? "Dihapus dari simpanan" : "Disimpan. Lihat lewat ikon hati di atas");
       }}
-      className={`${compact ? "h-11 w-11" : "btn btn-line btn-sm"} inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/70 font-semibold transition-colors ${
+      className={`${compact ? "h-11 w-11" : "btn btn-line btn-sm"} inline-flex items-center justify-center gap-2 rounded-sm border border-ink/70 font-semibold transition-colors ${
         on ? "!border-stamp !bg-stamp text-white" : "hover:bg-ink/8"
       }`}
     >
@@ -43,7 +43,7 @@ export function ShareButton({ judul, path, compact = false }: { judul: string; p
           toast("Tautan: " + url);
         }
       }}
-      className={`${compact ? "h-11 w-11" : "btn btn-line btn-sm"} inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/70 font-semibold hover:bg-ink/8`}
+      className={`${compact ? "h-11 w-11" : "btn btn-line btn-sm"} inline-flex items-center justify-center gap-2 rounded-sm border border-ink/70 font-semibold hover:bg-ink/8`}
     >
       <Icon name="share" />
       {!compact && "Bagikan"}

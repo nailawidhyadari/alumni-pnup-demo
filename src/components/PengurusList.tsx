@@ -30,7 +30,7 @@ export function PengurusList() {
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3">
               <span>
                 <span className="kicker">Bidang</span>
-                <span className="font-display mt-0.5 block text-xl font-bold leading-snug">{b.nama}</span>
+                <span className="font-display mt-0.5 block text-xl font-semibold leading-snug">{b.nama}</span>
                 <span className="mt-0.5 block text-[0.9rem] text-mute">{b.anggota.length + 1} pengurus</span>
               </span>
               <Icon name="arrow" className="mt-2 transition-transform group-open:rotate-90" />

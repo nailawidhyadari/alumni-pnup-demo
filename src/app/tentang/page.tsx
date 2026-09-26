@@ -14,7 +14,7 @@ export default function Page() {
       <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
         <div>
           <p className="kicker">Tentang kami</p>
-          <h1 className="font-display mt-1 text-4xl font-bold leading-tight md:text-6xl">Satu almamater, satu keluarga besar</h1>
+          <h1 className="font-display mt-1 text-4xl font-semibold leading-tight md:text-6xl">Satu almamater, satu keluarga besar</h1>
           <p className="mt-5 max-w-2xl text-xl text-ink2">
             {ORG.lengkap} adalah wadah silaturahmi dan kolaborasi alumni lintas angkatan yang berkomitmen mendukung almamater, memberi kontribusi bagi masyarakat, dan membangun masa depan yang lebih baik.
           </p>
@@ -34,12 +34,12 @@ export default function Page() {
       </div>
 
       <section className="mt-14" aria-labelledby="nilai">
-        <h2 id="nilai" className="font-display text-3xl font-bold">Lima nilai kami</h2>
+        <h2 id="nilai" className="font-display text-3xl font-semibold">Lima nilai kami</h2>
         <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {NILAI.map((n, i) => (
-            <li key={n} className="rounded-md border-[1.5px] border-ink bg-gold/30 p-4">
-              <span className="font-display text-3xl font-bold italic text-stamp">{i + 1}</span>
-              <p className="font-display text-xl font-bold">{n}</p>
+            <li key={n} className="rounded-sm border border-ink bg-gold/30 p-4">
+              <span className="font-display text-3xl font-semibold italic text-stamp">{i + 1}</span>
+              <p className="font-display text-xl font-semibold">{n}</p>
             </li>
           ))}
         </ol>
@@ -47,25 +47,25 @@ export default function Page() {
 
       <section className="mt-16" aria-labelledby="inti">
         <p className="kicker">Periode {ORG.periode}</p>
-        <h2 id="inti" className="font-display mt-1 text-3xl font-bold md:text-4xl">Pengurus inti</h2>
+        <h2 id="inti" className="font-display mt-1 text-3xl font-semibold md:text-4xl">Pengurus inti</h2>
         <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PENGURUS_INTI.map((p) => (
             <li key={p.nama} className="index-card p-5">
               <p className="text-xs font-bold uppercase tracking-wider text-stamp">{p.jabatan}</p>
-              <p className="font-display mt-1 text-2xl font-bold leading-tight">{p.nama}</p>
+              <p className="font-display mt-1 text-2xl font-semibold leading-tight">{p.nama}</p>
             </li>
           ))}
         </ul>
       </section>
 
       <section className="mt-16" aria-labelledby="bidang">
-        <h2 id="bidang" className="font-display text-3xl font-bold md:text-4xl">Bidang-bidang</h2>
+        <h2 id="bidang" className="font-display text-3xl font-semibold md:text-4xl">Bidang-bidang</h2>
         <p className="mt-2 text-lg text-ink2">Ketuk sebuah bidang untuk melihat koordinator dan anggotanya.</p>
         <div className="mt-6"><PengurusList /></div>
       </section>
 
-      <div className="mt-16 rounded-md border-2 border-ink bg-ink p-8 text-paper md:p-10">
-        <p className="font-display text-3xl font-bold italic">Ingin ikut berkontribusi?</p>
+      <div className="mt-16 rounded-sm border border-ink bg-ink p-8 text-paper md:p-10">
+        <p className="font-display text-3xl font-semibold italic">Ingin ikut berkontribusi?</p>
         <p className="mt-2 max-w-xl text-paper/80">Perkenalkan usahamu ke keluarga besar alumni, atau kabari kami lewat {ORG.email}.</p>
         <Link href="/daftar-usaha" className="btn mt-5 !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha</Link>
       </div>

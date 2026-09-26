@@ -50,16 +50,16 @@ export function KarierList() {
           return (
             <li key={l.id} id={`l${l.id}`} className="index-card scroll-mt-40 p-5 md:p-6">
               <div className="flex flex-wrap items-start gap-5">
-                <span className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-md border border-ink/25 bg-white">
+                <span className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-sm border border-ink/25 bg-white">
                   <Image src={l.logo} alt={`Logo ${l.perusahaan}`} width={80} height={80} className="h-full w-full object-contain p-1.5" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap gap-2 text-[0.78rem] font-bold uppercase tracking-wider">
-                    <span className="rounded-full bg-forest px-2.5 py-0.5 text-white">{l.tipe}</span>
-                    <span className="rounded-full border border-ink/40 px-2.5 py-0.5">{l.pendidikan.join(" / ")}</span>
+                    <span className="rounded-sm bg-forest px-2.5 py-0.5 text-white">{l.tipe}</span>
+                    <span className="rounded-sm border border-ink/40 px-2.5 py-0.5">{l.pendidikan.join(" / ")}</span>
                     <span className="py-0.5 text-mute">{l.posted}</span>
                   </div>
-                  <h2 className="font-display mt-2 text-2xl font-bold leading-tight md:text-[1.75rem]">{l.posisi}</h2>
+                  <h2 className="font-display mt-2 text-2xl font-semibold leading-tight md:text-[1.75rem]">{l.posisi}</h2>
                   <p className="mt-0.5 flex flex-wrap items-center gap-x-3 text-ink2">
                     <span className="font-semibold">{l.perusahaan}</span>
                     <span className="inline-flex items-center gap-1"><Icon name="pin" size={16} />{l.kota}</span>
@@ -79,21 +79,21 @@ export function KarierList() {
               {o && (
                 <div id={`rinci-${l.id}`} className="rise mt-6 grid gap-8 border-t border-ink/25 pt-6 md:grid-cols-2">
                   <div>
-                    <h3 className="font-display text-xl font-bold">Deskripsi</h3>
+                    <h3 className="font-display text-xl font-semibold">Deskripsi</h3>
                     <p className="mt-2 text-[1.05rem]">{l.deskripsi}</p>
-                    <h3 className="font-display mt-5 text-xl font-bold">Program studi</h3>
+                    <h3 className="font-display mt-5 text-xl font-semibold">Program studi</h3>
                     <ul className="mt-2 flex flex-wrap gap-2">
                       {l.prodi.map((p) => (
-                        <li key={p} className="rounded-full bg-paper2 px-3 py-1 text-[0.92rem]">{p}</li>
+                        <li key={p} className="rounded-sm bg-paper2 px-3 py-1 text-[0.92rem]">{p}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-bold">Yang akan kamu pelajari</h3>
+                    <h3 className="font-display text-xl font-semibold">Yang akan kamu pelajari</h3>
                     <ol className="mt-2 space-y-2">
                       {l.skill.map((s, i) => (
                         <li key={s} className="flex gap-3">
-                          <span className="font-display w-6 shrink-0 text-xl font-bold italic text-stamp">{i + 1}</span>
+                          <span className="font-display w-6 shrink-0 text-xl font-semibold italic text-stamp">{i + 1}</span>
                           {s}
                         </li>
                       ))}
@@ -109,11 +109,11 @@ export function KarierList() {
       {list.length === 0 && <p className="index-card mt-4 p-8 text-center text-lg">Belum ada lowongan yang cocok. Coba kata kunci lain.</p>}
 
       <section className="mt-16" aria-labelledby="alur">
-        <h2 id="alur" className="font-display text-3xl font-bold">Alur lamaran</h2>
+        <h2 id="alur" className="font-display text-3xl font-semibold">Alur lamaran</h2>
         <ol className="mt-6 grid gap-4 md:grid-cols-5">
           {ALUR_LAMAR.map((a, i) => (
-            <li key={a.judul} className="relative rounded-md border-[1.5px] border-ink bg-card p-4">
-              <span className="font-display text-4xl font-bold text-gold">{i + 1}</span>
+            <li key={a.judul} className="relative rounded-sm border border-ink bg-card p-4">
+              <span className="font-display text-4xl font-semibold text-gold">{i + 1}</span>
               <p className="mt-1 font-bold">{a.judul}</p>
               <p className="mt-1 text-[0.92rem] text-ink2">{a.isi}</p>
             </li>

@@ -55,7 +55,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Image src="/img/logo-ika.png" alt="" width={48} height={48} className="h-11 w-11 rounded-full" priority />
           <span className="leading-tight">
-            <span className="font-display block text-xl font-bold tracking-tight">IKA PNUP</span>
+            <span className="font-display block text-xl font-semibold tracking-tight">IKA PNUP</span>
             <span className="hidden text-[0.72rem] font-medium text-mute sm:block">Ikatan Alumni Politeknik Negeri Ujung Pandang</span>
           </span>
         </Link>
@@ -66,8 +66,8 @@ export function Header() {
               key={n.href}
               href={n.href}
               aria-current={aktif(n.href) ? "page" : undefined}
-              className={`rounded-full px-3.5 py-2 text-[0.95rem] font-semibold transition-colors hover:bg-ink/8 ${
-                aktif(n.href) ? "bg-ink text-paper hover:bg-ink" : ""
+              className={`border-b-2 px-3 py-2 text-[0.95rem] font-semibold transition-colors hover:border-ink/40 ${
+                aktif(n.href) ? "border-ink" : "border-transparent"
               }`}
             >
               {n.label}
@@ -76,7 +76,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <div role="group" aria-label="Ukuran huruf" className="hidden items-center rounded-full border-2 border-ink/70 p-0.5 sm:flex">
+          <div role="group" aria-label="Ukuran huruf" className="hidden items-center rounded-sm border border-ink/70 p-0.5 sm:flex">
             {UKURAN.map((u) => (
               <button
                 key={u.v}
@@ -84,7 +84,7 @@ export function Header() {
                 aria-label={u.label}
                 aria-pressed={size === u.v}
                 onClick={() => setSize(u.v)}
-                className={`font-display grid h-9 w-9 place-items-center rounded-full font-bold leading-none ${u.cls} ${
+                className={`font-display grid h-9 w-9 place-items-center rounded-sm font-bold leading-none ${u.cls} ${
                   size === u.v ? "bg-ink text-paper" : "hover:bg-ink/10"
                 }`}
               >
@@ -95,7 +95,7 @@ export function Header() {
           <Link
             href="/marketplace?simpanan=1"
             aria-label={`Usaha tersimpan, ${favs.length} usaha`}
-            className="relative grid h-11 w-11 place-items-center rounded-full border-2 border-ink/70 hover:bg-ink/8"
+            className="relative grid h-11 w-11 place-items-center rounded-sm border border-ink/70 hover:bg-ink/8"
           >
             <Icon name="heart" />
             {favs.length > 0 && (
@@ -104,12 +104,12 @@ export function Header() {
               </span>
             )}
           </Link>
-          <Link href="/daftar-usaha" className="btn btn-ink btn-sm hidden lg:inline-flex">
+          <Link href="/daftar-usaha" className="btn btn-ink btn-sm hidden whitespace-nowrap lg:inline-flex">
             Daftarkan usaha
           </Link>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full border-2 border-ink xl:hidden"
+            className="grid h-11 w-11 place-items-center rounded-sm border border-ink xl:hidden"
             aria-expanded={open}
             aria-controls="menu-mobile"
             aria-label={open ? "Tutup menu" : "Buka menu"}

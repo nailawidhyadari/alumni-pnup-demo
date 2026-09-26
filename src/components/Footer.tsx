@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <Image src="/img/logo-ika.png" alt="" width={56} height={56} className="h-14 w-14 rounded-full bg-paper" />
-            <p className="font-display text-2xl font-bold">{ORG.nama}</p>
+            <p className="font-display text-2xl font-semibold">{ORG.nama}</p>
           </div>
           <p className="mt-4 max-w-md text-paper/80">{ORG.lengkap}. {ORG.slogan}</p>
           <p className="mt-6 max-w-md rounded-lg border border-paper/25 p-3 text-sm text-paper/70">

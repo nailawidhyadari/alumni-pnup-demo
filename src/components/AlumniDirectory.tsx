@@ -48,7 +48,7 @@ export function AlumniDirectory() {
       <form role="search" onSubmit={(e) => e.preventDefault()} className="relative">
         <Icon name="search" size={22} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mute" />
         <label htmlFor="a-q" className="sr-only">Cari nama, jurusan, kota, atau tempat bekerja</label>
-        <input id="a-q" type="search" value={q} onChange={(e) => ubah(setQ)(e.target.value)} placeholder="Cari nama, jurusan, kota, atau tempat bekerja…" className="input !min-h-14 !rounded-full !border-2 !border-ink pl-12 text-[1.05rem]" />
+        <input id="a-q" type="search" value={q} onChange={(e) => ubah(setQ)(e.target.value)} placeholder="Cari nama, jurusan, kota, atau tempat bekerja…" className="input !min-h-14 !rounded-sm !border !border-ink pl-12 text-[1.05rem]" />
       </form>
 
       <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_auto_auto]">
@@ -86,7 +86,7 @@ export function AlumniDirectory() {
         <nav aria-label="Lompat ke huruf" className="flex flex-wrap gap-1">
           {HURUF.map((h) => (
             <button key={h} type="button" disabled={!adaHuruf.has(h)} aria-pressed={huruf === h} onClick={() => ubah(setHuruf)(huruf === h ? null : h)}
-              className="font-display grid h-9 w-9 place-items-center rounded font-bold hover:bg-ink/10 disabled:opacity-25 aria-pressed:bg-ink aria-pressed:text-paper">
+              className="font-display grid h-9 w-9 place-items-center rounded font-semibold hover:bg-ink/10 disabled:opacity-25 aria-pressed:bg-ink aria-pressed:text-paper">
               {h}
             </button>
           ))}
@@ -104,7 +104,7 @@ export function AlumniDirectory() {
 
       {hasil.length === 0 ? (
         <div className="index-card mt-4 p-8 text-center">
-          <p className="font-display text-3xl font-bold">Belum ada yang cocok</p>
+          <p className="font-display text-3xl font-semibold">Belum ada yang cocok</p>
           <p className="mt-2 text-ink2">Coba ejaan lain atau kurangi filter.</p>
           <button type="button" className="btn btn-ink mt-5" onClick={reset}>Hapus semua filter</button>
         </div>
@@ -113,9 +113,9 @@ export function AlumniDirectory() {
           <ul className="mt-4 grid gap-4 md:grid-cols-2">
             {hasil.slice(0, banyak).map((a) => (
               <li key={a.id} className="index-card flex gap-4 p-4">
-                <span aria-hidden className="font-display grid h-14 w-14 shrink-0 place-items-center rounded-full border-2 border-ink bg-gold text-xl font-bold">{inisial(a.nama)}</span>
+                <span aria-hidden className="font-display grid h-14 w-14 shrink-0 place-items-center rounded-full border border-ink bg-ink text-paper text-xl font-semibold">{inisial(a.nama)}</span>
                 <div className="min-w-0 flex-1">
-                  <h2 className="font-display text-xl font-bold leading-tight">{a.nama}</h2>
+                  <h2 className="font-display text-xl font-semibold leading-tight">{a.nama}</h2>
                   <p className="mt-0.5 text-[0.95rem] text-ink2">{a.jurusan} · {a.jenjang} · lulus {a.lulus}</p>
                   <p className="mt-1 text-[0.95rem]">{a.profesi}, <span className="text-ink2">{a.instansi}</span></p>
                   <p className="mt-1 flex items-center gap-1.5 text-[0.9rem] text-mute"><Icon name="pin" size={15} />{a.kota}</p>

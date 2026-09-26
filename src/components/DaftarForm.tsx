@@ -46,11 +46,11 @@ export function DaftarForm() {
     return (
       <div role="status" className="index-card mx-auto max-w-2xl p-8 text-center md:p-12">
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-forest text-white"><Icon name="check" size={32} /></span>
-        <h2 className="font-display mt-5 text-3xl font-bold">Terima kasih, {f.nama.split(" ")[0]}.</h2>
+        <h2 className="font-display mt-5 text-3xl font-semibold">Terima kasih, {f.nama.split(" ")[0]}.</h2>
         <p className="mt-3 text-lg text-ink2">
           Data usaha <strong>{f.usaha}</strong> sudah kami terima dan menunggu verifikasi pengurus. Setelah disetujui, usahamu akan tampil di marketplace.
         </p>
-        <p className="mt-4 rounded-md bg-gold/30 p-3 text-sm">Ini demo: data tidak dikirim ke mana pun dan hanya tampil di layar ini.</p>
+        <p className="mt-4 rounded-sm bg-gold/30 p-3 text-sm">Ini demo: data tidak dikirim ke mana pun dan hanya tampil di layar ini.</p>
         <button type="button" className="btn btn-line mt-6" onClick={() => (setF(F0), setFoto(null), setOk(false))}>Isi formulir lagi</button>
       </div>
     );
@@ -63,7 +63,7 @@ export function DaftarForm() {
     <form onSubmit={kirim} noValidate className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
       <div className="space-y-8">
         <fieldset className="space-y-4">
-          <legend className="font-display text-2xl font-bold">1. Tentang usaha</legend>
+          <legend className="font-display text-2xl font-semibold">1. Tentang usaha</legend>
           <div>
             <label htmlFor="f-usaha" className="mb-1 block font-semibold">Nama usaha</label>
             <input {...a11y("usaha")} className="input" value={f.usaha} onChange={set("usaha")} placeholder="Contoh: Kedai Airumi" />
@@ -113,7 +113,7 @@ export function DaftarForm() {
         </fieldset>
 
         <fieldset className="space-y-4">
-          <legend className="font-display text-2xl font-bold">2. Tentang pemilik</legend>
+          <legend className="font-display text-2xl font-semibold">2. Tentang pemilik</legend>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="f-nama" className="mb-1 block font-semibold">Nama lengkap</label>
@@ -151,19 +151,19 @@ export function DaftarForm() {
       <aside className="lg:sticky lg:top-40 lg:self-start" aria-label="Pratinjau kartu">
         <p className="kicker mb-3">Pratinjau kartu usahamu</p>
         <article className="index-card overflow-hidden">
-          <div className="relative aspect-[16/10] border-b-[1.5px] border-ink bg-paper2">
+          <div className="relative aspect-[16/10] border-b border-ink bg-paper2">
             {foto ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={foto} alt="Pratinjau foto usaha" className="h-full w-full object-cover" />
             ) : (
               <div className="grid h-full place-items-center bg-forest text-paper/80"><span className="font-display text-xl italic">Foto usaha</span></div>
             )}
-            <span className="absolute left-0 top-3 border-y-[1.5px] border-r-[1.5px] border-ink bg-gold px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider">{f.grup.split(" ")[0]}</span>
+            <span className="absolute left-0 top-3 border-y border-r border-ink bg-gold px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider">{f.grup.split(" ")[0]}</span>
             <Stamp angkatan={Number(f.angkatan) >= 1980 ? Number(f.angkatan) : undefined} size={62} className="absolute -bottom-0.5 right-3 translate-y-1/3" />
           </div>
           <div className="p-4 pt-5">
             <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-mute">Baru · {f.grup}</p>
-            <h3 className="font-display mt-1 text-[1.4rem] font-bold leading-tight">{f.judul || "Judul penawaran"}</h3>
+            <h3 className="font-display mt-1 text-[1.4rem] font-semibold leading-tight">{f.judul || "Judul penawaran"}</h3>
             <p className="mt-0.5 font-medium text-ink2">{f.usaha || "Nama usaha"}</p>
             <p className="mt-2 line-clamp-3 text-[0.95rem] text-ink2">{f.deskripsi || "Deskripsi singkat akan tampil di sini."}</p>
             <p className="mt-3 flex flex-wrap gap-x-4 text-[0.9rem] text-ink2">

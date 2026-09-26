@@ -212,7 +212,7 @@ export function Explorer() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Cari produk, jasa, nama usaha, atau alumni…"
-              className="input !min-h-14 !rounded-full !border-2 !border-ink pl-12 text-[1.05rem]"
+              className="input !min-h-14 !rounded-sm !border !border-ink pl-12 text-[1.05rem]"
             />
           </div>
         </form>
@@ -227,10 +227,10 @@ export function Explorer() {
       </div>
 
       {/* alumni sekitarmu */}
-      <section aria-labelledby="dekat" className="mt-6 rounded-md border-2 border-ink bg-forest p-5 text-paper shadow-[5px_5px_0_var(--gold)] md:p-6">
+      <section aria-labelledby="dekat" className="mt-6 rounded-sm border-t-4 border-gold bg-ink p-5 text-paper md:p-6">
         <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <h2 id="dekat" className="font-display flex items-center gap-2.5 text-2xl font-bold">
+            <h2 id="dekat" className="font-display flex items-center gap-2.5 text-2xl font-semibold">
               <Icon name="locate" size={26} /> Alumni sekitarmu
             </h2>
             <p className="mt-1 max-w-xl text-paper/85">Tunjukkan lokasi, dan usaha sesama alumni yang paling dekat akan muncul paling atas.</p>
@@ -299,8 +299,8 @@ export function Explorer() {
           <button type="button" className="btn btn-line w-full lg:hidden" aria-expanded={filterBuka} onClick={() => setFilterBuka(!filterBuka)}>
             <Icon name="filter" /> {filterBuka ? "Tutup filter" : "Filter jurusan & angkatan"}
           </button>
-          <div className={`${filterBuka ? "mt-4 block" : "hidden"} rounded-md border-[1.5px] border-ink bg-card p-5 lg:mt-0 lg:block`}>
-            <h2 className="font-display mb-4 hidden text-xl font-bold lg:block">Saring</h2>
+          <div className={`${filterBuka ? "mt-4 block" : "hidden"} rounded-sm border border-ink bg-card p-5 lg:mt-0 lg:block`}>
+            <h2 className="font-display mb-4 hidden text-xl font-semibold lg:block">Saring</h2>
             {Panel}
           </div>
         </aside>
@@ -323,14 +323,14 @@ export function Explorer() {
                   <option value="angkatan">Angkatan tertua</option>
                 </select>
               </label>
-              <div role="group" aria-label="Cara tampil" className="flex rounded-full border-2 border-ink p-0.5">
+              <div role="group" aria-label="Cara tampil" className="flex rounded-sm border border-ink p-0.5">
                 {(
                   [
                     ["kartu", "list", "Kartu"],
                     ["peta", "map", "Peta"],
                   ] as const
                 ).map(([k, ic, l]) => (
-                  <button key={k} type="button" aria-pressed={tampil === k} onClick={() => setTampil(k)} className={`flex min-h-10 items-center gap-1.5 rounded-full px-4 font-semibold ${tampil === k ? "bg-ink text-paper" : ""}`}>
+                  <button key={k} type="button" aria-pressed={tampil === k} onClick={() => setTampil(k)} className={`flex min-h-10 items-center gap-1.5 rounded-sm px-4 font-semibold ${tampil === k ? "bg-ink text-paper" : ""}`}>
                     <Icon name={ic} size={18} /> {l}
                   </button>
                 ))}
@@ -340,7 +340,7 @@ export function Explorer() {
 
           {hasil.length === 0 ? (
             <div className="index-card p-8 text-center">
-              <p className="font-display text-3xl font-bold">Belum ada yang cocok</p>
+              <p className="font-display text-3xl font-semibold">Belum ada yang cocok</p>
               <p className="mx-auto mt-2 max-w-md text-ink2">
                 {terdekatDiluar !== null && isFinite(terdekatDiluar)
                   ? `Usaha alumni terdekat berjarak sekitar ${Math.ceil(terdekatDiluar)} km dari ${origin?.label}. Coba perluas radius.`
@@ -380,7 +380,7 @@ export function Explorer() {
                         Angkatan {v.pemilik.angkatan ?? "—"} · {v.kota}
                         {origin && ` · ± ${Math.round(jarak.get(v.id) ?? 0)} km`}
                       </span>
-                      <span className="font-display mt-0.5 block text-lg font-bold leading-snug">{v.judul}</span>
+                      <span className="font-display mt-0.5 block text-lg font-semibold leading-snug">{v.judul}</span>
                       <span className="block text-[0.92rem] text-ink2">{v.usaha}</span>
                       {aktif === v.id && (
                         <span className="mt-2 flex gap-2">
