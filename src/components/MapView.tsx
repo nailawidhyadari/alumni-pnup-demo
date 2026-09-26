@@ -2,7 +2,7 @@
 
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Vendor } from "@/data/vendors";
 import type { Titik } from "@/lib/geo";
 
@@ -29,6 +29,7 @@ export default function MapView({
   const map = useRef<L.Map | null>(null);
   const layer = useRef<L.LayerGroup | null>(null);
   const markers = useRef<Map<number, L.Marker>>(new Map());
+  const [kunci, setKunci] = useState(() => interactive && L.Browser.mobile);
   const cb = useRef(onSelect);
   useEffect(() => {
     cb.current = onSelect;
@@ -96,12 +97,18 @@ export default function MapView({
   }, [activeId, vendors]);
 
   return (
-    <div
-      ref={el}
-      style={{ height }}
-      className="w-full overflow-hidden rounded-sm border border-ink"
-      role="application"
-      aria-label="Peta lokasi usaha alumni"
-    />
+    <div className="relative" style={{ height }}>
+      <div ref={el} style={{ height: "100%" }} className="w-full overflow-hidden rounded-sm border border-ink" role="application" aria-label="Peta lokasi usaha alumni" />
+      {kunci && (
+        <button
+          type="button"
+          onClick={() => setKunci(false)}
+          className="absolute inset-0 z-[500] flex items-end justify-center rounded-sm bg-transparent pb-4"
+          aria-label="Aktifkan peta agar bisa digeser dan diperbesar"
+        >
+          <span className="rounded-sm bg-ink/90 px-4 py-2 text-sm font-semibold text-paper">Ketuk untuk menggeser peta</span>
+        </button>
+      )}
+    </div>
   );
 }

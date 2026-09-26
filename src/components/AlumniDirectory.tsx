@@ -51,13 +51,14 @@ export function AlumniDirectory() {
         <input id="a-q" type="search" value={q} onChange={(e) => ubah(setQ)(e.target.value)} placeholder="Cari nama, jurusan, kota, atau tempat bekerja…" className="input !min-h-14 !rounded-sm !border !border-ink pl-12 text-[1.05rem]" />
       </form>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_auto_auto]">
+      <div className="mt-5 grid gap-4 xl:grid-cols-[1fr_auto]">
         <div role="group" aria-label="Jurusan" className="flex flex-wrap gap-2">
           <button type="button" className="chip" aria-pressed={jur === null} onClick={() => ubah(setJur)(null)}>Semua jurusan</button>
           {JURUSAN.map((j) => (
             <button key={j} type="button" className="chip" aria-pressed={jur === j} onClick={() => ubah(setJur)(jur === j ? null : j)}>{j}</button>
           ))}
         </div>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
         <label className="flex items-center gap-2 font-medium">
           Lulus
           <select className="input !min-h-10 !w-auto !py-1" value={thn} onChange={(e) => ubah(setThn)(e.target.value)}>
@@ -80,6 +81,7 @@ export function AlumniDirectory() {
             <option value="lama">Lulusan tertua</option>
           </select>
         </label>
+        </div>
       </div>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-y border-ink/25 py-3">
