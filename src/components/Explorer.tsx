@@ -339,7 +339,7 @@ export function Explorer() {
           </div>
 
           {hasil.length === 0 ? (
-            <div className="index-card p-8 text-center">
+            <div className="index-card no-grow p-8 text-center">
               <p className="font-display text-3xl font-semibold">Belum ada yang cocok</p>
               <p className="mx-auto mt-2 max-w-md text-ink2">
                 {terdekatDiluar !== null && isFinite(terdekatDiluar)

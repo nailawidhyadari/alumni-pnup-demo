@@ -87,7 +87,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
         <aside className="lg:sticky lg:top-40 lg:self-start">
           {/* kartu alumni */}
-          <div className="index-card overflow-hidden">
+          <div className="index-card no-grow overflow-hidden">
             <div className="flex items-center justify-between bg-ink px-5 py-2.5 text-paper">
               <span className="kicker !text-gold">Kartu alumni</span>
               <span className="text-xs tracking-widest">IKA PNUP</span>

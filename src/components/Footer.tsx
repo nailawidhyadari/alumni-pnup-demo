@@ -27,6 +27,8 @@ export function Footer() {
               ["/karier", "Karier & magang"],
               ["/agenda", "Agenda kegiatan"],
               ["/berita", "Berita"],
+              ["/galeri", "Galeri kegiatan"],
+              ["/daftar-alumni", "Daftar alumni"],
               ["/tentang", "Tentang & pengurus"],
               ["/daftar-usaha", "Daftarkan usaha"],
             ].map(([h, l]) => (

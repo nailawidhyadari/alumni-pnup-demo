@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroSearch } from "@/components/HeroSearch";
 import { Icon } from "@/components/Icon";
+import { Kta } from "@/components/Kta";
 import { MapLazy } from "@/components/MapLazy";
+import { CountUp, Marquee, Reveal } from "@/components/Motion";
 import { Photo } from "@/components/Photo";
 import { Stamp } from "@/components/Stamp";
 import { VendorCard } from "@/components/VendorCard";
-import { AGENDA, BERITA, GALERI, LOWONGAN, ORG, PENGURUS_INTI } from "@/data/site";
+import { AGENDA, BERITA, GALERI, LOWONGAN, ORG, PENGURUS_INTI, SLOGAN, TOTAL_PENGURUS } from "@/data/site";
 import { GRUP, VENDORS, vendorById } from "@/data/vendors";
 
 const ROMAWI = ["I", "II", "III", "IV", "V"];
@@ -75,6 +77,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="border-b border-ink/30 bg-paper2 py-4 text-ink"><Marquee items={SLOGAN} /></div>
+
       {/* ANGKA */}
       <section className="border-b-2 border-ink bg-ink text-paper" aria-label="Ringkasan">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-6 px-4 py-8 text-center md:grid-cols-4 lg:px-8">
@@ -82,10 +86,10 @@ export default function Home() {
             [VENDORS.length, "usaha alumni"],
             [angkatan.length, "angkatan tercatat"],
             [kota.length, "kota & kabupaten"],
-            [GRUP.length, "kategori"],
+            [TOTAL_PENGURUS, "pengurus periode ini"],
           ].map(([n, l]) => (
             <div key={l as string}>
-              <dd className="font-display text-5xl font-semibold text-gold">{n}</dd>
+              <dd className="font-display text-5xl font-semibold text-gold md:text-6xl"><CountUp to={n as number} /></dd>
               <dt className="mt-1 text-paper/80">{l}</dt>
             </div>
           ))}
@@ -93,6 +97,7 @@ export default function Home() {
       </section>
 
       {/* KATEGORI */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-20 lg:px-8" aria-labelledby="kat">
         <Judul kicker="Daftar isi" judul="Cari menurut kebutuhan" href="/marketplace" label="Lihat semua usaha" />
         <h2 id="kat" className="sr-only">Kategori</h2>
@@ -117,7 +122,11 @@ export default function Home() {
         </ul>
       </section>
 
+      
+      </Reveal>
+
       {/* USAHA TERBARU */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-label="Usaha terbaru">
         <Judul kicker="Halaman terbaru" judul="Baru bergabung di marketplace" href="/marketplace" label="Buka marketplace" />
         <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -129,7 +138,11 @@ export default function Home() {
         </ul>
       </section>
 
+      
+      </Reveal>
+
       {/* PETA */}
+      <Reveal>
       <section className="mt-24 border-y-2 border-ink bg-paper2" aria-labelledby="peta">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
@@ -155,7 +168,11 @@ export default function Home() {
         </div>
       </section>
 
+      
+      </Reveal>
+
       {/* LINTAS ANGKATAN */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="angkatan">
         <Judul kicker="Buku induk" judul="Lintas angkatan, satu almamater" />
         <h2 id="angkatan" className="sr-only">Angkatan</h2>
@@ -171,7 +188,11 @@ export default function Home() {
         </ul>
       </section>
 
+      
+      </Reveal>
+
       {/* CARA KERJA */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="cara">
         <Judul kicker="Mudah untuk semua usia" judul="Tiga langkah, tanpa aplikasi tambahan" />
         <h2 id="cara" className="sr-only">Cara memakai</h2>
@@ -192,7 +213,38 @@ export default function Home() {
         </ol>
       </section>
 
+      
+      </Reveal>
+
+      {/* KTA */}
+      <Reveal>
+      <section className="mx-auto mt-24 max-w-7xl px-4 lg:px-8" aria-labelledby="kta">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <p className="kicker">Keanggotaan</p>
+            <h2 id="kta" className="font-display mt-1 text-3xl font-semibold leading-tight md:text-5xl">Satu kartu untuk seluruh keluarga alumni</h2>
+            <p className="mt-4 text-lg text-ink2">
+              Kartu Tanda Alumni menjadi identitas dan simbol kebersamaan, sekaligus dasar pendataan alumni yang lebih tertata. Kartu diserahkan perdana kepada wisudawan pada wisuda pertama 2026.
+            </p>
+            <ul className="mt-5 space-y-2 text-lg">
+              {["Identitas resmi alumni PNUP", "Terhubung dengan database dan jejaring lintas angkatan", "Diserahkan langsung pada momen wisuda"].map((t) => (
+                <li key={t} className="flex gap-3"><span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-forest text-white"><Icon name="check" size={14} /></span>{t}</li>
+              ))}
+            </ul>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/daftar-alumni" className="btn btn-ink">Daftar alumni <Icon name="arrow" size={18} /></Link>
+              <Link href="/berita/kartu-keanggotaan-alumni-terbaru" className="btn btn-line">Baca beritanya</Link>
+            </div>
+          </div>
+          <div className="mx-auto w-full max-w-md"><Kta nama="Nama Alumni" /></div>
+        </div>
+      </section>
+
+      
+      </Reveal>
+
       {/* AGENDA + KARIER */}
+      <Reveal>
       <section className="mx-auto mt-24 grid max-w-7xl grid-cols-1 gap-14 px-4 lg:grid-cols-2 lg:px-8">
         <div aria-labelledby="ag">
           <Judul kicker="Kalender alumni" judul="Agenda mendatang" href="/agenda" label="Semua agenda" />
@@ -241,7 +293,11 @@ export default function Home() {
         </div>
       </section>
 
+      
+      </Reveal>
+
       {/* BERITA */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="br">
         <Judul kicker="Kabar almamater" judul="Berita terbaru" href="/berita" label="Semua berita" />
         <h2 id="br" className="sr-only">Berita</h2>
@@ -272,7 +328,11 @@ export default function Home() {
         </div>
       </section>
 
+      
+      </Reveal>
+
       {/* PENGURUS + KUTIPAN */}
+      <Reveal>
       <section className="mt-24 bg-ink text-paper" aria-labelledby="pg">
         <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
@@ -299,12 +359,16 @@ export default function Home() {
         </div>
       </section>
 
+      
+      </Reveal>
+
       {/* GALERI */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-20 lg:px-8" aria-labelledby="gl">
-        <Judul kicker="Dokumentasi" judul="Galeri kegiatan" />
+        <Judul kicker="Dokumentasi" judul="Galeri kegiatan" href="/galeri" label="Semua foto" />
         <h2 id="gl" className="sr-only">Galeri</h2>
         <ul className="grid gap-5 md:grid-cols-3">
-          {GALERI.map((g) => (
+          {GALERI.slice(0, 3).map((g) => (
             <li key={g.src}>
               <figure className="index-card overflow-hidden p-2 pb-3">
                 <div className="relative aspect-[4/3]">
@@ -317,17 +381,23 @@ export default function Home() {
         </ul>
       </section>
 
+      
+      </Reveal>
+
       {/* CTA */}
+      <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8">
         <div className="relative overflow-hidden rounded-sm border-t-4 border-gold bg-ink p-8 text-paper shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)] md:p-14">
           <div className="max-w-2xl">
             <h2 className="font-display text-4xl font-semibold leading-tight md:text-5xl">Punya usaha? Perkenalkan ke keluarga besar alumni.</h2>
             <p className="mt-3 text-lg">Isi formulir singkat, lihat pratinjau kartu usahamu langsung, lalu kirim untuk diverifikasi pengurus.</p>
-            <Link href="/daftar-usaha" className="btn mt-7 !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha saya <Icon name="arrow" size={18} /></Link>
+            <div className="mt-7 flex flex-wrap gap-3"><Link href="/daftar-usaha" className="btn !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha saya <Icon name="arrow" size={18} /></Link><Link href="/daftar-alumni" className="btn !border-paper text-paper hover:!bg-paper hover:text-ink">Daftar sebagai alumni</Link></div>
           </div>
           
         </div>
       </section>
-    </>
+      </Reveal>
+
+      </>
   );
 }

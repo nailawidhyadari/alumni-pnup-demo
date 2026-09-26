@@ -20,7 +20,7 @@ export function Photo({ v, sizes, priority = false }: { v: Pick<Vendor, "foto" |
         fill
         sizes={sizes}
         priority={priority}
-        className={v.fit === "cover" ? "object-cover" : "object-contain p-4"}
+        className={`transition-transform duration-700 ease-out group-hover:scale-110 ${v.fit === "cover" ? "object-cover" : "object-contain p-4"}`}
       />
     </>
   );

@@ -253,7 +253,22 @@ export const BIDANG: { nama: string; koordinator: string; anggota: string[] }[] 
 ];
 
 export const GALERI = [
-  { src: "/img/news/pelantikan.jpg", cap: "Penandatanganan pelantikan pengurus" },
-  { src: "/img/news/foto-bersama.jpg", cap: "Foto bersama pengurus dan alumni" },
-  { src: "/img/news/kta.jpg", cap: "Penyerahan Kartu Tanda Alumni saat wisuda" },
+  { src: "/img/news/pelantikan.jpg", cap: "Penandatanganan pelantikan pengurus", ket: "Pelantikan pengurus IKA PNUP periode 2025–2028." },
+  { src: "/img/news/foto-bersama.jpg", cap: "Foto bersama pengurus dan alumni", ket: "Pengurus dan alumni berfoto bersama seusai pelantikan." },
+  { src: "/img/news/kta.jpg", cap: "Penyerahan Kartu Tanda Alumni saat wisuda", ket: "Ketua Umum menyerahkan KTA secara simbolis kepada wisudawan." },
+  { src: "/img/news/kartu.png", cap: "Kartu keanggotaan alumni", ket: "Rancangan Kartu Keanggotaan IKA PNUP yang diserahkan perdana pada wisuda pertama 2026." },
+  { src: "/img/news/web.png", cap: "Peluncuran website resmi", ket: "Tampilan website resmi IKA PNUP di perangkat desktop dan seluler." },
+  { src: "/img/event/networking.png", cap: "Forum jejaring bisnis alumni", ket: "Ilustrasi IKA Business Networking oleh Bidang Entrepreneur." },
 ];
+
+export const SLOGAN = [
+  "Satu Almamater, Sejuta Karya",
+  "Alumni Terampil, Industri Tumbuh",
+  "Ilmu Hari Ini, Solusi Masa Depan",
+  "Teknologi Menghubungkan Peluang",
+  "Alumni Berkarya, Energi Terjaga",
+  "Kolaborasi Alumni, Kekuatan Masa Depan",
+  "Profesional dalam Angka, Berintegritas dalam Karya",
+];
+
+export const TOTAL_PENGURUS = PENGURUS_INTI.length + BIDANG.reduce((a, b) => a + 1 + b.anggota.length, 0);

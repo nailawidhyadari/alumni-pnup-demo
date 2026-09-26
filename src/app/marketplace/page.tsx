@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Explorer } from "@/components/Explorer";
+import { CountUp } from "@/components/Motion";
 import { VENDORS } from "@/data/vendors";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function Page() {
                 [kota, "kota"],
               ].map(([n, l]) => (
                 <div key={l as string}>
-                  <dd className="font-display text-4xl font-semibold">{n}</dd>
+                  <dd className="font-display text-4xl font-semibold"><CountUp to={n as number} /></dd>
                   <dt className="text-sm text-mute">{l}</dt>
                 </div>
               ))}

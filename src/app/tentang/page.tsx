@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PengurusList } from "@/components/PengurusList";
-import { ORG, PENGURUS_INTI } from "@/data/site";
+import { CountUp } from "@/components/Motion";
+import { BIDANG, ORG, PENGURUS_INTI, TOTAL_PENGURUS } from "@/data/site";
 
 export const metadata: Metadata = { title: "Tentang & Pengurus", description: "Visi, misi, nilai, dan susunan pengurus IKA PNUP periode 2025–2028." };
 
@@ -32,6 +33,20 @@ export default function Page() {
           <p className="font-display mt-2 text-2xl font-semibold leading-snug">Memperkuat jejaring, mendorong kolaborasi, serta menciptakan peluang untuk pengembangan alumni dan almamater.</p>
         </section>
       </div>
+
+      <dl className="mt-14 grid grid-cols-2 gap-y-6 border-y border-ink/30 py-8 text-center md:grid-cols-4">
+        {[
+          [TOTAL_PENGURUS, "pengurus"],
+          [BIDANG.length, "bidang kerja"],
+          [5, "nilai bersama"],
+          [3, "program mendatang"],
+        ].map(([n, l]) => (
+          <div key={l as string}>
+            <dd className="font-display text-5xl font-semibold text-goldink"><CountUp to={n as number} /></dd>
+            <dt className="mt-1 text-ink2">{l}</dt>
+          </div>
+        ))}
+      </dl>
 
       <section className="mt-14" aria-labelledby="nilai">
         <h2 id="nilai" className="font-display text-3xl font-semibold">Lima nilai kami</h2>

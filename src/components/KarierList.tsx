@@ -48,7 +48,7 @@ export function KarierList() {
         {list.map((l) => {
           const o = buka === l.id;
           return (
-            <li key={l.id} id={`l${l.id}`} className="index-card scroll-mt-40 p-5 md:p-6">
+            <li key={l.id} id={`l${l.id}`} className="index-card no-grow scroll-mt-40 p-5 md:p-6">
               <div className="flex flex-wrap items-start gap-5">
                 <span className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-sm border border-ink/25 bg-white">
                   <Image src={l.logo} alt={`Logo ${l.perusahaan}`} width={80} height={80} className="h-full w-full object-contain p-1.5" />

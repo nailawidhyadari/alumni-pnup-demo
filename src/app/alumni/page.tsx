@@ -15,6 +15,7 @@ export default function Page() {
       <p className="mt-4 max-w-2xl rounded-sm border border-dashed border-ink/40 bg-card p-3 text-[0.92rem] text-ink2">
         Catatan demo: kecuali pemilik usaha di marketplace, nama alumni di sini fiktif. Di situs sebenarnya, kontak pribadi tidak ditampilkan dan hanya bisa dihubungi lewat pengurus.
       </p>
+      <p className="mt-3"><a href="/daftar-alumni" className="font-semibold underline decoration-gold decoration-2 underline-offset-4">Belum terdaftar? Daftar sebagai alumni →</a></p>
       <div className="mt-10"><AlumniDirectory /></div>
     </div>
   );

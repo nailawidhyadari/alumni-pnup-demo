@@ -136,6 +136,10 @@ export function Header() {
               </Link>
             ))}
           </nav>
+          <div className="mt-4 flex gap-4 text-lg font-semibold">
+            <Link href="/galeri" onClick={() => setOpen(false)} className="underline underline-offset-4">Galeri</Link>
+            <Link href="/daftar-alumni" onClick={() => setOpen(false)} className="underline underline-offset-4">Daftar alumni</Link>
+          </div>
           <div className="mt-6">
             <p className="kicker mb-2">Ukuran huruf</p>
             <div className="flex gap-2">

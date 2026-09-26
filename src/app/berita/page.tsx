@@ -10,6 +10,7 @@ export default function Page() {
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-8 lg:py-16">
       <p className="kicker">Kabar almamater</p>
       <h1 className="font-display mt-1 text-4xl font-semibold leading-tight md:text-6xl">Berita & informasi</h1>
+      <Link href="/galeri" className="mt-3 inline-block font-semibold underline decoration-gold decoration-2 underline-offset-4">Lihat galeri kegiatan →</Link>
       <ul className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {BERITA.map((b) => (
           <li key={b.slug}>

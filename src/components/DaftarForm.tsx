@@ -44,7 +44,7 @@ export function DaftarForm() {
 
   if (ok) {
     return (
-      <div role="status" className="index-card mx-auto max-w-2xl p-8 text-center md:p-12">
+      <div role="status" className="index-card no-grow mx-auto max-w-2xl p-8 text-center md:p-12">
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-forest text-white"><Icon name="check" size={32} /></span>
         <h2 className="font-display mt-5 text-3xl font-semibold">Terima kasih, {f.nama.split(" ")[0]}.</h2>
         <p className="mt-3 text-lg text-ink2">
@@ -150,7 +150,7 @@ export function DaftarForm() {
 
       <aside className="lg:sticky lg:top-40 lg:self-start" aria-label="Pratinjau kartu">
         <p className="kicker mb-3">Pratinjau kartu usahamu</p>
-        <article className="index-card overflow-hidden">
+        <article className="index-card no-grow overflow-hidden">
           <div className="relative aspect-[16/10] border-b border-ink bg-paper2">
             {foto ? (
               // eslint-disable-next-line @next/next/no-img-element

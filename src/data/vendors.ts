@@ -33,6 +33,7 @@ export const JURUSAN = [
   "Teknik Mesin",
   "Teknik Elektro",
   "Teknik Kimia",
+  "Teknik Informatika dan Komputer",
   "Administrasi Niaga",
   "Akuntansi",
 ] as const;
