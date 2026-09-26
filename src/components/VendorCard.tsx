@@ -24,7 +24,7 @@ export function VendorCard({
 }) {
   return (
     <article
-      className="index-card group flex h-full flex-col overflow-hidden"
+      className="index-card tilt group flex h-full flex-col overflow-hidden"
       data-active={aktif}
       onMouseEnter={() => onHover?.(v.id)}
       onMouseLeave={() => onHover?.(null)}

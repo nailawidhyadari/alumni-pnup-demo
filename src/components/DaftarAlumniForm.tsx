@@ -34,7 +34,7 @@ export function DaftarAlumniForm() {
   const nomor = f.angkatan && f.jurusan ? `PNUP-${f.angkatan}-${String(f.nama.length * 137 + 1000).slice(-4)}` : "PNUP-0000-0000";
 
   const Kartu = (
-    <div aria-label="Pratinjau Kartu Tanda Alumni" className="group relative aspect-[1.586/1] w-full overflow-hidden rounded-lg bg-ink p-5 text-paper shadow-[0_24px_40px_-24px_rgba(19,36,65,0.7)] transition-transform duration-500 hover:[transform:perspective(900px)_rotateX(4deg)_rotateY(-6deg)_scale(1.03)]">
+    <div aria-label="Pratinjau Kartu Tanda Alumni" className="group relative aspect-[1.586/1] w-full overflow-hidden rounded-lg bg-ink p-5 text-paper shadow-[0_24px_40px_-24px_rgba(15, 47, 43,0.7)] transition-transform duration-500 hover:[transform:perspective(900px)_rotateX(4deg)_rotateY(-6deg)_scale(1.03)]">
       <div aria-hidden className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "repeating-linear-gradient(135deg, #fff 0 1px, transparent 1px 14px)" }} />
       <div aria-hidden className="absolute -right-10 -top-10 h-44 w-44 rounded-full border border-gold/60" />
       <div aria-hidden className="absolute -right-4 -top-4 h-44 w-44 rounded-full border border-gold/30" />

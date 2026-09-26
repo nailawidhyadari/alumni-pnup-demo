@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <Link href="/berita" className="inline-flex items-center gap-2 font-semibold hover:underline"><Icon name="arrowleft" size={18} /> Semua berita</Link>
       <p className="kicker mt-6">{b.kategori} · {b.tanggal}</p>
       <h1 className="font-display mt-2 text-4xl font-semibold leading-[1.1] md:text-5xl">{b.judul}</h1>
-      <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-sm border border-ink shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)]">
+      <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-sm border border-ink shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)]">
         <Image src={b.foto} alt="" fill sizes="48rem" className="object-cover" priority />
       </div>
       <div className="mt-8 space-y-5 text-[1.15rem] leading-[1.75]">

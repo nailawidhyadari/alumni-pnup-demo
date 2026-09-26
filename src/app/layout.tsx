@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Newsreader, Public_Sans } from "next/font/google";
+import { Effects } from "@/components/Effects";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ToastHost } from "@/components/Toast";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export const viewport: Viewport = { themeColor: "#132441", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0f2f2b", width: "device-width", initialScale: 1 };
 
 const initSize = `try{var p=JSON.parse(localStorage.getItem("ika-pnup-prefs-v1")||"{}");if(p.size)document.documentElement.dataset.size=p.size}catch(e){}`;
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#isi" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-paper">
           Lompat ke isi halaman
         </a>
+        <Effects />
         <Header />
         <main id="isi">{children}</main>
         <Footer />

@@ -54,7 +54,7 @@ export function AgendaList() {
           <li key={a.id} id={`a${a.id}`} className="index-card no-grow scroll-mt-40 overflow-hidden md:grid md:grid-cols-[1fr_1.15fr]">
             <div className={`relative aspect-[16/10] border-b border-ink md:aspect-auto md:border-b-0 md:border-r ${i % 2 ? "md:order-2 md:border-l md:border-r-0" : ""}`}>
               <Image src={a.foto} alt={a.judul} fill sizes="(min-width:768px) 40vw, 100vw" className="object-cover" />
-              <div className="absolute left-4 top-4 w-20 overflow-hidden rounded-sm border border-ink bg-card text-center shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)]">
+              <div className="absolute left-4 top-4 w-20 overflow-hidden rounded-sm border border-ink bg-card text-center shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)]">
                 <div className="bg-ink py-0.5 text-xs font-bold uppercase tracking-widest text-white">{d.toLocaleDateString("id-ID", { month: "short" })}</div>
                 <div className="font-display text-4xl font-semibold leading-tight">{d.getDate()}</div>
                 <div className="pb-1 text-xs font-semibold">{d.getFullYear()}</div>

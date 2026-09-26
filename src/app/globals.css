@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f6f3ec; /* kertas */
-  --paper-2: #ebe6d9;
-  --card: #fdfbf7;
-  --ink: #132441; /* biru tinta, sama dengan situs IKA */
-  --ink-2: #33415e;
-  --mute: #5d6577;
-  --gold: #b8974a;
-  --gold-ink: #7a5f1f; /* emas untuk teks, kontras aman di atas kertas */
-  --forest: #1f4d3f;
-  --stamp: #7a2a2f; /* merah marun */
-  --line: rgba(19, 36, 65, 0.14);
-  --line-strong: rgba(19, 36, 65, 0.32);
+  --paper: #f5f1e6; /* kertas hangat */
+  --paper-2: #e8e2d0;
+  --card: #fdfaf3;
+  --sage: #dbe7df;
+  --ink: #0f2f2b; /* hijau botol, hampir hitam */
+  --ink-2: #354a45;
+  --mute: #5e6f6a;
+  --gold: #dc9366; /* terakota muda, untuk latar gelap */
+  --gold-ink: #98461f; /* terakota tua, untuk teks di atas kertas */
+  --forest: #23785c;
+  --stamp: #a4401f; /* merah terakota */
+  --line: rgba(15, 47, 43, 0.14);
+  --line-strong: rgba(15, 47, 43, 0.32);
 }
 
 @theme inline {
@@ -25,6 +26,7 @@
   --color-gold: var(--gold);
   --color-goldink: var(--gold-ink);
   --color-forest: var(--forest);
+  --color-sage: var(--sage);
   --color-stamp: var(--stamp);
   --font-display: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-public), system-ui, sans-serif;
@@ -92,7 +94,7 @@ body {
   color: var(--paper);
 }
 .btn-ink:hover {
-  background: #1c3563;
+  background: #1d4a43;
 }
 .btn-line {
   background: transparent;
@@ -103,12 +105,12 @@ body {
   color: var(--paper);
 }
 .btn-wa {
-  background: #1f7a4d;
-  border-color: #1f7a4d;
+  background: #1a9a52;
+  border-color: #1a9a52;
   color: #fff;
 }
 .btn-wa:hover {
-  background: #17603c;
+  background: #137a41;
 }
 .btn-sm {
   min-height: 2.5rem;
@@ -141,7 +143,7 @@ body {
 }
 .chip:hover {
   border-color: var(--ink);
-  background: rgba(19, 36, 65, 0.06);
+  background: rgba(15, 47, 43, 0.06);
 }
 .chip[aria-pressed="true"],
 .chip[aria-selected="true"] {
@@ -177,7 +179,7 @@ body {
   border: 1px solid var(--line-strong);
   border-top: 3px solid var(--ink);
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(19, 36, 65, 0.08), 0 10px 24px -18px rgba(19, 36, 65, 0.4);
+  box-shadow: 0 1px 2px rgba(15, 47, 43, 0.08), 0 10px 24px -18px rgba(15, 47, 43, 0.4);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .index-card:hover,
@@ -185,7 +187,7 @@ body {
   border-color: var(--ink);
   transform: translateY(-6px) scale(1.03);
   z-index: 5;
-  box-shadow: 0 4px 8px rgba(19, 36, 65, 0.12), 0 26px 44px -20px rgba(19, 36, 65, 0.55);
+  box-shadow: 0 4px 8px rgba(15, 47, 43, 0.12), 0 26px 44px -20px rgba(15, 47, 43, 0.55);
 }
 .index-card.no-grow:hover {
   transform: translateY(-3px);
@@ -316,7 +318,7 @@ input[type="range"].range::-moz-range-thumb {
   border-radius: 50%;
   background: var(--forest);
   border: 3px solid #fff;
-  box-shadow: 0 0 0 6px rgba(29, 92, 72, 0.25);
+  box-shadow: 0 0 0 6px rgba(35, 120, 92, 0.25);
 }
 
 /* muncul saat digulir */
@@ -375,6 +377,166 @@ input[type="range"].range::-moz-range-thumb {
   .index-card:hover,
   .btn:hover,
   .chip:hover {
+    transform: none;
+  }
+}
+
+/* ====== animasi & efek ====== */
+
+/* kata judul naik satu-satu */
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.w > span {
+  display: inline-block;
+  animation: wordUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes wordUp {
+  from {
+    transform: translateY(108%) rotate(3deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* kontur peta */
+.kontur {
+  color: var(--ink);
+}
+.kontur-a {
+  transform-origin: 300px 300px;
+  animation: spin 160s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* melayang pelan */
+.float-y {
+  animation: floaty 7s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* kartu miring mengikuti kursor */
+.index-card.tilt:hover {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px) scale(1.03);
+}
+
+/* sorotan cahaya yang mengikuti kursor pada blok gelap */
+.spot {
+  position: relative;
+  overflow: hidden;
+}
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(220, 147, 102, 0.24), transparent 65%);
+}
+.spot:hover::before {
+  opacity: 1;
+}
+
+/* anak-anak grid muncul berurutan */
+.st > * {
+  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal:not(.in) .st > * {
+  opacity: 0;
+  transform: translateY(26px) scale(0.97);
+}
+.st > *:nth-child(2) { transition-delay: 90ms; }
+.st > *:nth-child(3) { transition-delay: 180ms; }
+.st > *:nth-child(4) { transition-delay: 270ms; }
+.st > *:nth-child(5) { transition-delay: 360ms; }
+.st > *:nth-child(6) { transition-delay: 450ms; }
+.st > *:nth-child(7) { transition-delay: 540ms; }
+.st > *:nth-child(n + 8) { transition-delay: 620ms; }
+
+/* garis judul bagian tumbuh dari kiri */
+.rule {
+  position: relative;
+  border-bottom: 1px solid var(--line-strong);
+}
+.rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--ink) 0 70%, var(--gold-ink) 70%);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+.reveal:not(.in) .rule::after {
+  transform: scaleX(0);
+}
+
+/* peta: pin jatuh, lokasi berdenyut */
+@keyframes pinDrop {
+  from {
+    transform: translateY(-26px) rotate(-45deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-45deg);
+    opacity: 1;
+  }
+}
+.pin {
+  animation: pinDrop 0.55s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+.you {
+  position: relative;
+}
+.you::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--forest);
+  animation: ping 2s ease-out infinite;
+}
+@keyframes ping {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w > span,
+  .kontur-a,
+  .float-y,
+  .pin,
+  .you::after {
+    animation: none;
+  }
+  .reveal:not(.in) .st > * {
+    opacity: 1;
     transform: none;
   }
 }

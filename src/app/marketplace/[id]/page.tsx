@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.35fr_1fr]">
         <div>
-          <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink bg-paper2 shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink bg-paper2 shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)]">
             <Photo v={v} sizes="(min-width:1024px) 55vw, 100vw" priority />
           </div>
 

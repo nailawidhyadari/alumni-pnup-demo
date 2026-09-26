@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroSearch } from "@/components/HeroSearch";
 import { Icon } from "@/components/Icon";
+import { Kontur } from "@/components/Kontur";
 import { Kta } from "@/components/Kta";
 import { MapLazy } from "@/components/MapLazy";
 import { CountUp, Marquee, Reveal } from "@/components/Motion";
@@ -44,16 +45,18 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden border-b-2 border-ink">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:px-8 lg:py-20">
+        <Kontur className="absolute -right-40 -top-32 h-[46rem] w-[46rem] opacity-[0.14]" />
+        <Kontur className="absolute -bottom-52 -left-40 h-[34rem] w-[34rem] opacity-[0.09]" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:px-8 lg:py-20">
           <div className="rise">
-            <p className="kicker">Marketplace resmi keluarga besar alumni</p>
-            <h1 className="font-display mt-3 text-[2.7rem] font-semibold leading-[1.02] tracking-tight md:text-7xl">
-              Beli, pesan, dan bermitra dengan <em className="not-italic text-goldink">sesama alumni</em> PNUP.
+            <p className="kicker rise">Marketplace resmi keluarga besar alumni</p>
+            <h1 className="font-display mt-3 text-[2.7rem] font-semibold leading-[1.02] tracking-tight md:text-7xl" aria-label="Beli, pesan, dan bermitra dengan sesama alumni PNUP.">
+              <span aria-hidden><span className="w"><span style={{ animationDelay: "150ms" }}>Beli,</span></span> <span className="w"><span style={{ animationDelay: "240ms" }}>pesan,</span></span> <span className="w"><span style={{ animationDelay: "330ms" }}>dan</span></span> <span className="w"><span style={{ animationDelay: "420ms" }}>bermitra</span></span> <span className="w"><span style={{ animationDelay: "510ms" }}>dengan</span></span> <span className="w"><span style={{ animationDelay: "600ms" }}><em className="not-italic text-goldink">sesama</em></span></span> <span className="w"><span style={{ animationDelay: "690ms" }}><em className="not-italic text-goldink">alumni</em></span></span> <span className="w"><span style={{ animationDelay: "780ms" }}>PNUP.</span></span></span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-ink2 md:text-xl">
+            <p className="rise mt-5 max-w-xl text-lg text-ink2 md:text-xl" style={{ animationDelay: "700ms" }}>
               Dari kontraktor sampai abon ikan, dari layanan internet sampai paket umrah. Semua dijalankan lulusan kampus yang sama. Kenali usahanya, lihat angkatannya, lalu hubungi langsung.
             </p>
-            <div className="mt-8 max-w-xl">
+            <div className="rise mt-8 max-w-xl" style={{ animationDelay: "900ms" }}>
               <HeroSearch />
             </div>
           </div>
@@ -61,26 +64,30 @@ export default function Home() {
           <div className="hidden md:block" aria-label="Contoh usaha alumni">
             <div className="grid grid-cols-2 gap-4">
               {hero.map((v, i) => (
-                <Link key={v.id} href={`/marketplace/${v.id}`} className={`index-card group block overflow-hidden ${i === 0 ? "col-span-2" : ""}`}>
-                  <div className={`relative border-b border-ink/30 bg-paper2 ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
-                    <Photo v={v} sizes={i === 0 ? "36rem" : "18rem"} priority={i === 0} />
-                    <Stamp angkatan={v.pemilik.angkatan} size={54} className="absolute bottom-1 right-3 translate-y-1/3" />
+                <div key={v.id} data-depth={[10, 22, 16][i]} className={i === 0 ? "col-span-2" : ""}>
+                  <div className="float-y" style={{ animationDelay: `${i * -2.3}s` }}>
+                    <Link href={`/marketplace/${v.id}`} className="index-card tilt group block overflow-hidden">
+                      <div className={`relative border-b border-ink/30 bg-paper2 ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
+                        <Photo v={v} sizes={i === 0 ? "36rem" : "18rem"} priority={i === 0} />
+                        <Stamp angkatan={v.pemilik.angkatan} size={54} className="absolute bottom-1 right-3 translate-y-1/3" />
+                      </div>
+                      <div className="p-4 pt-5">
+                        <p className="text-[0.72rem] font-bold uppercase tracking-wider text-mute">{v.kota} · {v.pemilik.jurusan}</p>
+                        <p className="font-display mt-0.5 text-lg font-semibold leading-tight group-hover:underline">{v.judul}</p>
+                      </div>
+                    </Link>
                   </div>
-                  <div className="p-4 pt-5">
-                    <p className="text-[0.72rem] font-bold uppercase tracking-wider text-mute">{v.kota} · {v.pemilik.jurusan}</p>
-                    <p className="font-display mt-0.5 text-lg font-semibold leading-tight group-hover:underline">{v.judul}</p>
-                  </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <div className="border-b border-ink/30 bg-paper2 py-4 text-ink"><Marquee items={SLOGAN} /></div>
+      <div className="border-b border-ink/30 bg-sage py-4 text-ink"><Marquee items={SLOGAN} /></div>
 
       {/* ANGKA */}
-      <section className="border-b-2 border-ink bg-ink text-paper" aria-label="Ringkasan">
+      <section className="spot border-b-2 border-ink bg-ink text-paper" aria-label="Ringkasan">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-6 px-4 py-8 text-center md:grid-cols-4 lg:px-8">
           {[
             [VENDORS.length, "usaha alumni"],
@@ -101,7 +108,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-20 lg:px-8" aria-labelledby="kat">
         <Judul kicker="Daftar isi" judul="Cari menurut kebutuhan" href="/marketplace" label="Lihat semua usaha" />
         <h2 id="kat" className="sr-only">Kategori</h2>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="st grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {GRUP.map((g, i) => {
             const n = VENDORS.filter((v) => v.grup === g.nama).length;
             return (
@@ -129,7 +136,7 @@ export default function Home() {
       <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-label="Usaha terbaru">
         <Judul kicker="Halaman terbaru" judul="Baru bergabung di marketplace" href="/marketplace" label="Buka marketplace" />
-        <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="st grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {baru.map((v) => (
             <li key={v.id}>
               <VendorCard v={v} />
@@ -143,7 +150,7 @@ export default function Home() {
 
       {/* PETA */}
       <Reveal>
-      <section className="mt-24 border-y-2 border-ink bg-paper2" aria-labelledby="peta">
+      <section className="mt-24 border-y-2 border-ink bg-sage" aria-labelledby="peta">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
             <p className="kicker">Peta jejaring</p>
@@ -176,7 +183,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="angkatan">
         <Judul kicker="Buku induk" judul="Lintas angkatan, satu almamater" />
         <h2 id="angkatan" className="sr-only">Angkatan</h2>
-        <ul className="flex flex-wrap items-start justify-center gap-x-10 gap-y-10 md:justify-between">
+        <ul className="st flex flex-wrap items-start justify-center gap-x-10 gap-y-10 md:justify-between">
           {angkatan.map(([a, n]) => (
             <li key={a}>
               <Link href={`/marketplace?angkatan=${a}`} className="group flex flex-col items-center gap-3" aria-label={`Angkatan ${a}, ${n} usaha`}>
@@ -196,7 +203,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="cara">
         <Judul kicker="Mudah untuk semua usia" judul="Tiga langkah, tanpa aplikasi tambahan" />
         <h2 id="cara" className="sr-only">Cara memakai</h2>
-        <ol className="grid gap-8 md:grid-cols-3">
+        <ol className="st grid gap-8 md:grid-cols-3">
           {[
             ["Cari", "Ketik kebutuhan, atau saring menurut jurusan, angkatan, dan kota. Ukuran huruf bisa diperbesar dari pojok kanan atas."],
             ["Kenali", "Baca profil usaha, lihat kartu alumni pemiliknya, dan cek lokasinya di peta sebelum menghubungi."],
@@ -249,7 +256,7 @@ export default function Home() {
         <div aria-labelledby="ag">
           <Judul kicker="Kalender alumni" judul="Agenda mendatang" href="/agenda" label="Semua agenda" />
           <h2 id="ag" className="sr-only">Agenda</h2>
-          <ul className="space-y-4">
+          <ul className="st space-y-4">
             {AGENDA.map((a) => {
               const t = tgl(a.tanggal);
               return (
@@ -274,7 +281,7 @@ export default function Home() {
         <div aria-labelledby="kr">
           <Judul kicker="Karier & magang" judul="Lowongan dari jejaring alumni" href="/karier" label="Semua lowongan" />
           <h2 id="kr" className="sr-only">Lowongan</h2>
-          <ul className="space-y-4">
+          <ul className="st space-y-4">
             {LOWONGAN.map((l) => (
               <li key={l.id}>
                 <Link href={`/karier#l${l.id}`} className="index-card flex items-center gap-4 p-3">
@@ -310,7 +317,7 @@ export default function Home() {
             <h3 className="font-display mt-1 text-3xl font-semibold leading-tight group-hover:underline">{BERITA[0].judul}</h3>
             <p className="mt-2 text-lg text-ink2">{BERITA[0].ringkas}</p>
           </Link>
-          <ul className="space-y-6">
+          <ul className="st space-y-6">
             {BERITA.slice(1).map((b) => (
               <li key={b.slug}>
                 <Link href={`/berita/${b.slug}`} className="group flex gap-4">
@@ -333,7 +340,7 @@ export default function Home() {
 
       {/* PENGURUS + KUTIPAN */}
       <Reveal>
-      <section className="mt-24 bg-ink text-paper" aria-labelledby="pg">
+      <section className="spot mt-24 bg-ink text-paper" aria-labelledby="pg">
         <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
@@ -346,7 +353,7 @@ export default function Home() {
             </div>
             <div>
               <h2 id="pg" className="sr-only">Pengurus inti</h2>
-              <ul className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+              <ul className="st grid gap-x-8 gap-y-5 sm:grid-cols-2">
                 {PENGURUS_INTI.map((p) => (
                   <li key={p.nama} className="border-t border-paper/30 pt-3">
                     <p className="text-sm font-bold uppercase tracking-wider text-gold">{p.jabatan}</p>
@@ -367,7 +374,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-20 lg:px-8" aria-labelledby="gl">
         <Judul kicker="Dokumentasi" judul="Galeri kegiatan" href="/galeri" label="Semua foto" />
         <h2 id="gl" className="sr-only">Galeri</h2>
-        <ul className="grid gap-5 md:grid-cols-3">
+        <ul className="st grid gap-5 md:grid-cols-3">
           {GALERI.slice(0, 3).map((g) => (
             <li key={g.src}>
               <figure className="index-card overflow-hidden p-2 pb-3">
@@ -387,7 +394,7 @@ export default function Home() {
       {/* CTA */}
       <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8">
-        <div className="relative overflow-hidden rounded-sm border-t-4 border-gold bg-ink p-8 text-paper shadow-[0_12px_28px_-16px_rgba(19,36,65,0.45)] md:p-14">
+        <div className="relative overflow-hidden spot rounded-sm border-t-4 border-gold bg-ink p-8 text-paper shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)] md:p-14">
           <div className="max-w-2xl">
             <h2 className="font-display text-4xl font-semibold leading-tight md:text-5xl">Punya usaha? Perkenalkan ke keluarga besar alumni.</h2>
             <p className="mt-3 text-lg">Isi formulir singkat, lihat pratinjau kartu usahamu langsung, lalu kirim untuk diverifikasi pengurus.</p>

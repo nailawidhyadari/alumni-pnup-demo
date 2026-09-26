@@ -59,16 +59,16 @@ export default function MapView({
     g.clearLayers();
     markers.current.clear();
     const pts: L.LatLngExpression[] = [];
-    vendors.forEach((v) => {
+    vendors.forEach((v, idx) => {
       const icon = L.divIcon({
         className: "",
-        html: `<div class="pin"><span>${esc(String(v.pemilik.angkatan ? String(v.pemilik.angkatan).slice(2) : "?"))}</span></div>`,
+        html: `<div class="pin" style="animation-delay:${idx * 70}ms"><span>${esc(String(v.pemilik.angkatan ? String(v.pemilik.angkatan).slice(2) : "?"))}</span></div>`,
         iconSize: [34, 34],
         iconAnchor: [17, 34],
       });
       const mk = L.marker([v.lat, v.lng], { icon, title: `${v.judul}, ${v.usaha}`, keyboard: true }).addTo(g);
       mk.bindPopup(
-        `<strong style="font-family:serif;font-size:15px">${esc(v.judul)}</strong><br>${esc(v.usaha)}<br><span style="color:#5d6577">${esc(v.kota)}</span><br><a href="/marketplace/${v.id}" style="font-weight:700;color:#1d5c48">Lihat profil →</a>`,
+        `<strong style="font-family:serif;font-size:15px">${esc(v.judul)}</strong><br>${esc(v.usaha)}<br><span style="color:#5d6577">${esc(v.kota)}</span><br><a href="/marketplace/${v.id}" style="font-weight:700;color:#23785c">Lihat profil →</a>`,
         { closeButton: false },
       );
       mk.on("click", () => cb.current?.(v.id));
@@ -77,7 +77,7 @@ export default function MapView({
     });
     if (origin) {
       L.marker([origin.lat, origin.lng], { icon: L.divIcon({ className: "", html: '<div class="you"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }), title: "Lokasi kamu", interactive: false }).addTo(g);
-      if (radiusKm) L.circle([origin.lat, origin.lng], { radius: radiusKm * 1000, color: "#1d5c48", weight: 1.5, fillColor: "#1d5c48", fillOpacity: 0.07, interactive: false }).addTo(g);
+      if (radiusKm) L.circle([origin.lat, origin.lng], { radius: radiusKm * 1000, color: "#23785c", weight: 1.5, fillColor: "#23785c", fillOpacity: 0.07, interactive: false }).addTo(g);
       pts.push([origin.lat, origin.lng]);
     }
     if (pts.length > 1) m.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 12 });
