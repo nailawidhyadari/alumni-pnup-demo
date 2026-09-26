@@ -8,6 +8,7 @@ import { MapLazy } from "./MapLazy";
 import { VendorCard } from "./VendorCard";
 import { GRUP, JURUSAN, VENDORS, type Grup } from "@/data/vendors";
 import { KOTA, jarakKm, type Titik } from "@/lib/geo";
+import { ratingSim } from "@/data/ulasan";
 import { toast, usePrefs } from "@/lib/prefs";
 
 const MIN_TH = 1990;
@@ -15,7 +16,7 @@ const MAX_TH = 2026;
 const RADIUS = [10, 25, 50, 100, 250];
 const SARAN = ["HVAC", "halal", "umrah", "traktor", "internet", "abon", "kacamata"];
 
-type Urut = "dekat" | "baru" | "nama" | "angkatan";
+type Urut = "dekat" | "baru" | "nama" | "angkatan" | "rating";
 
 const norm = (s: string) => s.toLowerCase();
 
@@ -70,6 +71,7 @@ export function Explorer() {
       dekat: (a, b) => (jarak.get(a.id) ?? 0) - (jarak.get(b.id) ?? 0),
       baru: (a, b) => b.id - a.id,
       nama: (a, b) => a.judul.localeCompare(b.judul, "id"),
+      rating: (a, b) => ratingSim(b.id).rata - ratingSim(a.id).rata,
       angkatan: (a, b) => (a.pemilik.angkatan ?? 9999) - (b.pemilik.angkatan ?? 9999),
     };
     return list.sort(cmp[urut === "dekat" && !origin ? "baru" : urut]);
@@ -316,6 +318,7 @@ export function Explorer() {
                 <select className="input !min-h-10 !w-auto !py-1" value={origin ? urut : urut === "dekat" ? "baru" : urut} onChange={(e) => setUrut(e.target.value as Urut)}>
                   {origin && <option value="dekat">Terdekat</option>}
                   <option value="baru">Terbaru</option>
+                  <option value="rating">Rating tertinggi</option>
                   <option value="nama">Nama A–Z</option>
                   <option value="angkatan">Angkatan tertua</option>
                 </select>

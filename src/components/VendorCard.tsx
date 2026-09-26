@@ -6,6 +6,7 @@ import { FavButton } from "./Actions";
 import { Photo } from "./Photo";
 import { Stamp } from "./Stamp";
 import { type Vendor, waLink } from "@/data/vendors";
+import { ratingSim } from "@/data/ulasan";
 import { formatJarak } from "@/lib/geo";
 
 export function VendorCard({
@@ -46,6 +47,16 @@ export function VendorCard({
           </Link>
         </h3>
         <p className="mt-0.5 font-medium text-ink2">{v.usaha}</p>
+        {(() => {
+          const r = ratingSim(v.id);
+          return r.n ? (
+            <p className="mt-1.5 flex items-center gap-1.5 text-[0.9rem]" title="Rating simulasi untuk demo">
+              <Icon name="star" size={16} className="fill-current text-gold" />
+              <strong>{r.rata.toFixed(1).replace(".", ",")}</strong>
+              <span className="text-mute">· {r.n} ulasan contoh</span>
+            </p>
+          ) : null;
+        })()}
         <p className="mt-2 line-clamp-2 text-[0.95rem] text-ink2">{v.ringkas}</p>
         <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[0.9rem] text-ink2">
           <div className="flex items-center gap-1.5">

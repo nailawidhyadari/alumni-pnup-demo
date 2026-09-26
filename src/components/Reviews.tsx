@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
+import { ULASAN_SIM } from "@/data/ulasan";
 import { toast } from "@/lib/prefs";
 
-type Ulasan = { nama: string; bintang: number; teks: string; tgl: string };
+type Ulasan = { nama: string; bintang: number; teks: string; tgl: string; sim?: boolean };
 
 function Bintang({ n, besar = false }: { n: number; besar?: boolean }) {
   return (
@@ -50,29 +51,38 @@ export function Reviews({ vendorId }: { vendorId: number }) {
     toast("Terima kasih atas ulasannya");
   };
 
-  const rata = daftar.length ? daftar.reduce((a, b) => a + b.bintang, 0) / daftar.length : 0;
+  const sim: Ulasan[] = (ULASAN_SIM[vendorId] ?? []).map((u) => ({ ...u, sim: true }));
+  const semua = [...daftar, ...sim];
+  const rata = semua.length ? semua.reduce((a, b) => a + b.bintang, 0) / semua.length : 0;
 
   return (
     <section className="mt-12" aria-labelledby="ulasan">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="ulasan" className="font-display text-2xl font-bold">Ulasan & rating</h2>
-        {daftar.length > 0 && (
+        {semua.length > 0 && (
           <p className="flex items-center gap-2 font-semibold">
-            <Bintang n={Math.round(rata)} /> {rata.toFixed(1).replace(".", ",")} dari {daftar.length} ulasan
+            <Bintang n={Math.round(rata)} /> {rata.toFixed(1).replace(".", ",")} dari {semua.length} ulasan
           </p>
         )}
       </div>
 
-      {daftar.length === 0 ? (
+      {sim.length > 0 && (
+        <p className="mt-3 rounded-md bg-gold/30 p-3 text-[0.9rem]">
+          Ulasan bertanda <strong>Simulasi</strong> adalah contoh untuk memperlihatkan tampilan. Nama dan isinya fiktif, bukan testimoni pelanggan asli.
+        </p>
+      )}
+
+      {semua.length === 0 ? (
         <p className="mt-3 rounded-md border border-dashed border-ink/40 bg-card p-5 text-ink2">
           Belum ada ulasan. Pernah memakai produk atau jasa ini? Jadilah yang pertama menulis.
         </p>
       ) : (
         <ul className="mt-4 space-y-3">
-          {daftar.map((u, i) => (
+          {semua.map((u, i) => (
             <li key={i} className="rounded-md border border-ink/25 bg-card p-4">
               <div className="flex flex-wrap items-center gap-x-3">
                 <strong>{u.nama}</strong>
+                {u.sim && <span className="rounded-full border border-dashed border-stamp px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-stamp">Simulasi</span>}
                 <Bintang n={u.bintang} />
                 <span className="text-sm text-mute">{u.tgl}</span>
               </div>

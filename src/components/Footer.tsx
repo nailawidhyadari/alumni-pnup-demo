@@ -23,6 +23,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-lg">
             {[
               ["/marketplace", "Marketplace alumni"],
+              ["/alumni", "Direktori alumni"],
               ["/karier", "Karier & magang"],
               ["/agenda", "Agenda kegiatan"],
               ["/berita", "Berita"],

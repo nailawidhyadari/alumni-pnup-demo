@@ -10,6 +10,7 @@ import { usePrefs, type Ukuran } from "@/lib/prefs";
 const NAV = [
   { href: "/", label: "Beranda" },
   { href: "/marketplace", label: "Marketplace" },
+  { href: "/alumni", label: "Direktori" },
   { href: "/karier", label: "Karier" },
   { href: "/agenda", label: "Agenda" },
   { href: "/berita", label: "Berita" },
