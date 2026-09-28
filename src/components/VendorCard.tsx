@@ -48,7 +48,7 @@ export function VendorCard({
           const r = ratingSim(v.id);
           return r.n ? (
             <p className="mt-1.5 flex items-center gap-1.5 text-[0.9rem]" title="Rating simulasi untuk demo">
-              <Icon name="star" size={16} className="fill-current text-goldink" />
+              <Icon name="star" size={16} className="fill-current text-emas" />
               <strong>{r.rata.toFixed(1).replace(".", ",")}</strong>
               <span className="text-mute">· {r.n} ulasan contoh</span>
             </p>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export const viewport: Viewport = { themeColor: "#1c1a17", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#17191e", width: "device-width", initialScale: 1 };
 
 const initSize = `try{var p=JSON.parse(localStorage.getItem("ika-pnup-prefs-v1")||"{}");if(p.size)document.documentElement.dataset.size=p.size}catch(e){}`;
 

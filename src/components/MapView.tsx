@@ -69,7 +69,7 @@ export default function MapView({
       });
       const mk = L.marker([v.lat, v.lng], { icon, title: `${v.judul}, ${v.usaha}`, keyboard: true }).addTo(g);
       mk.bindPopup(
-        `<strong style="font-family:serif;font-size:15px">${esc(v.judul)}</strong><br>${esc(v.usaha)}<br><span style="color:#726c62">${esc(v.kota)}</span><br><a href="/marketplace/${v.id}" style="font-weight:700;color:#7a1f26">Lihat profil →</a>`,
+        `<strong style="font-family:serif;font-size:15px">${esc(v.judul)}</strong><br>${esc(v.usaha)}<br><span style="color:#63666e">${esc(v.kota)}</span><br><a href="/marketplace/${v.id}" style="font-weight:700;color:#a31f1f">Lihat profil →</a>`,
         { closeButton: false },
       );
       mk.on("click", () => cb.current?.(v.id));
@@ -78,7 +78,7 @@ export default function MapView({
     });
     if (origin) {
       L.marker([origin.lat, origin.lng], { icon: L.divIcon({ className: "", html: '<div class="you"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }), title: "Lokasi kamu", interactive: false }).addTo(g);
-      if (radiusKm) L.circle([origin.lat, origin.lng], { radius: radiusKm * 1000, color: "#43604f", weight: 1.5, fillColor: "#43604f", fillOpacity: 0.07, interactive: false }).addTo(g);
+      if (radiusKm) L.circle([origin.lat, origin.lng], { radius: radiusKm * 1000, color: "#1f5c80", weight: 1.5, fillColor: "#1f5c80", fillOpacity: 0.07, interactive: false }).addTo(g);
       pts.push([origin.lat, origin.lng]);
     }
     if (pts.length > 1) m.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 12 });

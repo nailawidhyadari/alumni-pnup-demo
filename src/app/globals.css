@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f7f4ee; /* kertas netral, tidak kekuningan */
-  --paper-2: #ece6d9;
+  /* Warna diambil langsung dari lambang IKA PNUP: merah sayap garuda,
+     biru langit lingkaran lencana, emas pita/bintang, hitam garis roda gigi. */
+  --paper: #f6f5f1; /* netral, tidak kekuningan */
+  --paper-2: #e9e7e0;
   --card: #ffffff;
-  --ink: #1c1a17; /* nyaris hitam, netral hangat */
-  --ink-2: #4a463f;
-  --mute: #726c62;
-  --gold: #d99a96; /* pualam muda — dipakai di atas latar gelap */
-  --gold-ink: #7a1f26; /* merah pualam tua — dipakai di atas kertas */
-  --stamp: #7a1f26; /* alias aksen, sama dengan gold-ink: satu warna aksen saja */
-  --forest: #43604f; /* hijau kelabu senyap — hanya untuk fokus & tanda centang */
-  --line: rgba(28, 26, 23, 0.13);
-  --line-strong: rgba(28, 26, 23, 0.3);
+  --ink: #17191e; /* hitam kebiruan, dari garis roda gigi lambang */
+  --ink-2: #454850;
+  --mute: #63666e;
+  --gold: #e8938e; /* merah muda — dipakai di atas latar gelap */
+  --gold-ink: #a31f1f; /* merah lambang — dipakai di atas kertas */
+  --stamp: #a31f1f; /* alias aksen, sama dengan gold-ink: satu warna aksen saja */
+  --forest: #1f5c80; /* biru lambang — hanya untuk fokus, tanda centang & lokasi di peta */
+  --emas: #8a6208; /* emas lambang — khusus bintang rating */
+  --line: rgba(23, 25, 30, 0.13);
+  --line-strong: rgba(23, 25, 30, 0.3);
 }
 
 @theme inline {
@@ -26,6 +29,7 @@
   --color-goldink: var(--gold-ink);
   --color-forest: var(--forest);
   --color-stamp: var(--stamp);
+  --color-emas: var(--emas);
   --font-display: var(--font-serif), Georgia, serif;
   --font-sans: var(--font-public), system-ui, sans-serif;
 }
@@ -34,7 +38,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
-  font-size: 100%;
+  font-size: 104%;
 }
 html[data-size="lg"] {
   font-size: 115%;
