@@ -2,14 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroSearch } from "@/components/HeroSearch";
 import { Icon } from "@/components/Icon";
-import { Kontur } from "@/components/Kontur";
 import { Kta } from "@/components/Kta";
 import { MapLazy } from "@/components/MapLazy";
-import { CountUp, Marquee, Reveal } from "@/components/Motion";
+import { CountUp, Reveal } from "@/components/Motion";
 import { Photo } from "@/components/Photo";
-import { Stamp } from "@/components/Stamp";
 import { VendorCard } from "@/components/VendorCard";
-import { AGENDA, BERITA, GALERI, LOWONGAN, ORG, PENGURUS_INTI, SLOGAN, TOTAL_PENGURUS } from "@/data/site";
+import { AGENDA, BERITA, GALERI, LOWONGAN, ORG, PENGURUS_INTI, TOTAL_PENGURUS } from "@/data/site";
 import { GRUP, VENDORS, vendorById } from "@/data/vendors";
 
 const ROMAWI = ["I", "II", "III", "IV", "V"];
@@ -21,13 +19,13 @@ const tgl = (iso: string) => {
 
 function Judul({ kicker, judul, href, label }: { kicker: string; judul: string; href?: string; label?: string }) {
   return (
-    <div className="mb-8 flex flex-wrap items-end justify-between gap-3 border-b-2 border-ink pb-3">
+    <div className="mb-8 flex flex-wrap items-end justify-between gap-3 border-b border-ink pb-3">
       <div>
         <p className="kicker">{kicker}</p>
         <h2 className="font-display mt-1 text-3xl font-semibold leading-tight md:text-4xl">{judul}</h2>
       </div>
       {href && (
-        <Link href={href} className="inline-flex items-center gap-2 font-semibold underline decoration-gold decoration-2 underline-offset-4 hover:text-forest">
+        <Link href={href} className="inline-flex items-center gap-2 font-semibold underline decoration-goldink decoration-2 underline-offset-4 hover:text-goldink">
           {label} <Icon name="arrow" size={18} />
         </Link>
       )}
@@ -36,7 +34,7 @@ function Judul({ kicker, judul, href, label }: { kicker: string; judul: string; 
 }
 
 export default function Home() {
-  const hero = [vendorById(1)!, vendorById(2)!, vendorById(12)!];
+  const unggulan = vendorById(12)!;
   const kota = [...VENDORS.reduce((m, v) => m.set(v.kota, (m.get(v.kota) ?? 0) + 1), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
   const angkatan = [...VENDORS.reduce((m, v) => (v.pemilik.angkatan ? m.set(v.pemilik.angkatan, (m.get(v.pemilik.angkatan) ?? 0) + 1) : m), new Map<number, number>())].sort((a, b) => a[0] - b[0]);
   const baru = VENDORS.slice(0, 6);
@@ -44,51 +42,39 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-ink">
-        <Kontur className="absolute -right-40 -top-32 h-[46rem] w-[46rem] opacity-[0.14]" />
-        <Kontur className="absolute -bottom-52 -left-40 h-[34rem] w-[34rem] opacity-[0.09]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:px-8 lg:py-20">
-          <div className="rise">
+      <section className="border-b border-ink">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8 lg:py-16">
+          <div>
             <p className="kicker rise">Marketplace resmi keluarga besar alumni</p>
-            <h1 className="font-display mt-3 text-[2.7rem] font-semibold leading-[1.02] tracking-tight md:text-7xl" aria-label="Beli, pesan, dan bermitra dengan sesama alumni PNUP.">
-              <span aria-hidden><span className="w"><span style={{ animationDelay: "150ms" }}>Beli,</span></span> <span className="w"><span style={{ animationDelay: "240ms" }}>pesan,</span></span> <span className="w"><span style={{ animationDelay: "330ms" }}>dan</span></span> <span className="w"><span style={{ animationDelay: "420ms" }}>bermitra</span></span> <span className="w"><span style={{ animationDelay: "510ms" }}>dengan</span></span> <span className="w"><span style={{ animationDelay: "600ms" }}><em className="not-italic text-goldink">sesama</em></span></span> <span className="w"><span style={{ animationDelay: "690ms" }}><em className="not-italic text-goldink">alumni</em></span></span> <span className="w"><span style={{ animationDelay: "780ms" }}>PNUP.</span></span></span>
+            <h1 className="rise font-display mt-3 text-[2.6rem] font-semibold leading-[1.08] tracking-tight md:text-6xl" style={{ animationDelay: "80ms" }}>
+              Beli, pesan, dan bermitra dengan sesama alumni PNUP.
             </h1>
-            <p className="rise mt-5 max-w-xl text-lg text-ink2 md:text-xl" style={{ animationDelay: "700ms" }}>
+            <p className="rise mt-5 max-w-xl text-lg text-ink2 md:text-xl" style={{ animationDelay: "160ms" }}>
               Dari kontraktor sampai abon ikan, dari layanan internet sampai paket umrah. Semua dijalankan lulusan kampus yang sama. Kenali usahanya, lihat angkatannya, lalu hubungi langsung.
             </p>
-            <div className="rise mt-8 max-w-xl" style={{ animationDelay: "900ms" }}>
+            <div className="rise mt-8 max-w-xl" style={{ animationDelay: "240ms" }}>
               <HeroSearch />
             </div>
           </div>
 
-          <div className="hidden md:block" aria-label="Contoh usaha alumni">
-            <div className="grid grid-cols-2 gap-4">
-              {hero.map((v, i) => (
-                <div key={v.id} data-depth={[10, 22, 16][i]} className={i === 0 ? "col-span-2" : ""}>
-                  <div className="float-y" style={{ animationDelay: `${i * -2.3}s` }}>
-                    <Link href={`/marketplace/${v.id}`} className="index-card tilt group block overflow-hidden">
-                      <div className={`relative border-b border-ink/30 bg-paper2 ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
-                        <Photo v={v} sizes={i === 0 ? "36rem" : "18rem"} priority={i === 0} />
-                        <Stamp angkatan={v.pemilik.angkatan} size={54} className="absolute bottom-1 right-3 translate-y-1/3" />
-                      </div>
-                      <div className="p-4 pt-5">
-                        <p className="text-[0.72rem] font-bold uppercase tracking-wider text-mute">{v.kota} · {v.pemilik.jurusan}</p>
-                        <p className="font-display mt-0.5 text-lg font-semibold leading-tight group-hover:underline">{v.judul}</p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
+          <Link href={`/marketplace/${unggulan.id}`} className="rise group block" style={{ animationDelay: "200ms" }} aria-label={`Contoh usaha alumni: ${unggulan.judul}`}>
+            <div className="relative aspect-[4/5] overflow-hidden border border-ink sm:aspect-[5/4] lg:aspect-[4/5]">
+              <Photo v={unggulan} sizes="(min-width:1024px) 40vw, 90vw" priority />
             </div>
-          </div>
+            <div className="flex items-baseline justify-between gap-3 border-x border-b border-ink px-4 py-3">
+              <div className="min-w-0">
+                <p className="text-[0.72rem] font-bold uppercase tracking-wider text-mute">{unggulan.kota} · {unggulan.pemilik.jurusan}</p>
+                <p className="font-display mt-0.5 truncate text-lg font-semibold group-hover:underline">{unggulan.judul}</p>
+              </div>
+              <span className="stamp shrink-0">Angk. <b>{unggulan.pemilik.angkatan}</b></span>
+            </div>
+          </Link>
         </div>
       </section>
 
-      <div className="border-b border-ink/30 bg-sage py-4 text-ink"><Marquee items={SLOGAN} /></div>
-
       {/* ANGKA */}
-      <section className="spot border-b-2 border-ink bg-ink text-paper" aria-label="Ringkasan">
-        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-6 px-4 py-8 text-center md:grid-cols-4 lg:px-8">
+      <section className="border-b border-ink border-t-2 border-t-goldink bg-ink text-paper" aria-label="Ringkasan">
+        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 px-4 py-10 text-center md:grid-cols-4 lg:px-8">
           {[
             [VENDORS.length, "usaha alumni"],
             [angkatan.length, "angkatan tercatat"],
@@ -96,8 +82,8 @@ export default function Home() {
             [TOTAL_PENGURUS, "pengurus periode ini"],
           ].map(([n, l]) => (
             <div key={l as string}>
-              <dd className="font-display text-5xl font-semibold text-gold md:text-6xl"><CountUp to={n as number} /></dd>
-              <dt className="mt-1 text-paper/80">{l}</dt>
+              <dd className="font-display text-5xl font-semibold md:text-6xl"><CountUp to={n as number} /></dd>
+              <dt className="mt-1 text-paper/75">{l}</dt>
             </div>
           ))}
         </dl>
@@ -121,15 +107,13 @@ export default function Home() {
                   <span className="font-display text-4xl font-semibold text-goldink">{ROMAWI[i]}.</span>
                   <span className="font-display mt-3 text-xl font-semibold leading-tight">{g.nama}</span>
                   <span className="mt-1 text-[0.92rem] text-ink2">{g.ket}</span>
-                  <span className="mt-auto pt-5 text-sm font-bold uppercase tracking-wider text-stamp">{n ? `${n} usaha` : "Segera hadir"}</span>
+                  <span className="mt-auto pt-5 text-sm font-bold uppercase tracking-wider text-ink2">{n ? `${n} usaha` : "Segera hadir"}</span>
                 </Link>
               </li>
             );
           })}
         </ul>
       </section>
-
-      
       </Reveal>
 
       {/* USAHA TERBARU */}
@@ -144,14 +128,12 @@ export default function Home() {
           ))}
         </ul>
       </section>
-
-      
       </Reveal>
 
       {/* PETA */}
       <Reveal>
-      <section className="mt-24 border-y-2 border-ink bg-sage" aria-labelledby="peta">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+      <section className="mt-24 border-y border-ink bg-paper2" aria-labelledby="peta">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
             <p className="kicker">Peta jejaring</p>
             <h2 id="peta" className="font-display mt-1 text-3xl font-semibold leading-tight md:text-4xl">Alumni membuka usaha di seluruh Sulawesi Selatan</h2>
@@ -162,7 +144,7 @@ export default function Home() {
               {kota.map(([k, n]) => (
                 <li key={k}>
                   <Link href={`/marketplace?kota=${encodeURIComponent(k)}&radius=25`} className="group flex items-center justify-between gap-3 border-b border-ink/25 py-2 text-lg hover:border-ink">
-                    <span className="flex items-center gap-2.5"><Icon name="pin" size={18} className="text-stamp" />{k}</span>
+                    <span className="flex items-center gap-2.5"><Icon name="pin" size={18} className="text-goldink" />{k}</span>
                     <span className="flex items-center gap-2 font-bold">{n} usaha <Icon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" /></span>
                   </Link>
                 </li>
@@ -174,8 +156,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      
       </Reveal>
 
       {/* LINTAS ANGKATAN */}
@@ -183,19 +163,17 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8" aria-labelledby="angkatan">
         <Judul kicker="Buku induk" judul="Lintas angkatan, satu almamater" />
         <h2 id="angkatan" className="sr-only">Angkatan</h2>
-        <ul className="st flex flex-wrap items-start justify-center gap-x-10 gap-y-10 md:justify-between">
+        <ul className="st flex flex-wrap gap-3">
           {angkatan.map(([a, n]) => (
             <li key={a}>
-              <Link href={`/marketplace?angkatan=${a}`} className="group flex flex-col items-center gap-3" aria-label={`Angkatan ${a}, ${n} usaha`}>
-                <Stamp angkatan={a} size={104} className="" />
-                <span className="text-sm font-semibold text-ink2">{n} usaha</span>
+              <Link href={`/marketplace?angkatan=${a}`} className="group flex items-baseline gap-2 border border-ink px-4 py-2.5 hover:bg-ink hover:text-paper" aria-label={`Angkatan ${a}, ${n} usaha`}>
+                <span className="font-display text-xl font-semibold">{a}</span>
+                <span className="text-sm text-mute group-hover:text-paper/70">{n} usaha</span>
               </Link>
             </li>
           ))}
         </ul>
       </section>
-
-      
       </Reveal>
 
       {/* CARA KERJA */}
@@ -210,7 +188,7 @@ export default function Home() {
             ["Hubungi", "Sekali ketuk, WhatsApp terbuka dengan pesan pembuka yang sudah terisi. Tinggal kirim."],
           ].map(([j, t], i) => (
             <li key={j} className="flex gap-5">
-              <span className="font-display text-7xl font-semibold leading-none text-gold">{i + 1}</span>
+              <span className="font-display text-6xl font-semibold leading-none text-goldink">{i + 1}</span>
               <div>
                 <h3 className="font-display text-2xl font-semibold">{j}</h3>
                 <p className="mt-1.5 text-lg text-ink2">{t}</p>
@@ -219,14 +197,12 @@ export default function Home() {
           ))}
         </ol>
       </section>
-
-      
       </Reveal>
 
       {/* KTA */}
       <Reveal>
       <section className="mx-auto mt-24 max-w-7xl px-4 lg:px-8" aria-labelledby="kta">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="kicker">Keanggotaan</p>
             <h2 id="kta" className="font-display mt-1 text-3xl font-semibold leading-tight md:text-5xl">Satu kartu untuk seluruh keluarga alumni</h2>
@@ -246,8 +222,6 @@ export default function Home() {
           <div className="mx-auto w-full max-w-md"><Kta nama="Nama Alumni" /></div>
         </div>
       </section>
-
-      
       </Reveal>
 
       {/* AGENDA + KARIER */}
@@ -291,7 +265,7 @@ export default function Home() {
                   <span className="min-w-0">
                     <span className="font-display block text-lg font-semibold leading-tight">{l.posisi}</span>
                     <span className="block truncate text-[0.92rem] text-ink2">{l.perusahaan}</span>
-                    <span className="mt-1 inline-flex items-center gap-2 text-[0.8rem] font-bold uppercase tracking-wide text-forest"><Icon name="briefcase" size={14} /> {l.tipe} · {l.kota}</span>
+                    <span className="mt-1 inline-flex items-center gap-2 text-[0.8rem] font-bold uppercase tracking-wide text-ink2"><Icon name="briefcase" size={14} /> {l.tipe} · {l.kota}</span>
                   </span>
                 </Link>
               </li>
@@ -299,8 +273,6 @@ export default function Home() {
           </ul>
         </div>
       </section>
-
-      
       </Reveal>
 
       {/* BERITA */}
@@ -310,7 +282,7 @@ export default function Home() {
         <h2 id="br" className="sr-only">Berita</h2>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.4fr_1fr]">
           <Link href={`/berita/${BERITA[0].slug}`} className="group block">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink">
+            <div className="relative aspect-[16/10] overflow-hidden border border-ink">
               <Image src={BERITA[0].foto} alt="" fill sizes="(min-width:1024px) 55vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
             </div>
             <p className="kicker mt-4">{BERITA[0].kategori} · {BERITA[0].tanggal}</p>
@@ -321,7 +293,7 @@ export default function Home() {
             {BERITA.slice(1).map((b) => (
               <li key={b.slug}>
                 <Link href={`/berita/${b.slug}`} className="group flex gap-4">
-                  <div className="relative h-24 w-32 shrink-0 overflow-hidden rounded border border-ink sm:h-28 sm:w-40">
+                  <div className="relative h-24 w-32 shrink-0 overflow-hidden border border-ink sm:h-28 sm:w-40">
                     <Image src={b.foto} alt="" fill sizes="10rem" className="object-cover" />
                   </div>
                   <div>
@@ -334,15 +306,13 @@ export default function Home() {
           </ul>
         </div>
       </section>
-
-      
       </Reveal>
 
       {/* PENGURUS + KUTIPAN */}
       <Reveal>
-      <section className="spot mt-24 bg-ink text-paper" aria-labelledby="pg">
+      <section className="mt-24 bg-ink text-paper" aria-labelledby="pg">
         <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <p className="kicker !text-gold">Pengurus periode {ORG.periode}</p>
               <blockquote className="font-display mt-3 text-4xl font-semibold italic leading-tight md:text-5xl">
@@ -365,8 +335,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      
       </Reveal>
 
       {/* GALERI */}
@@ -378,7 +346,7 @@ export default function Home() {
           {GALERI.slice(0, 3).map((g) => (
             <li key={g.src}>
               <figure className="index-card overflow-hidden p-2 pb-3">
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image src={g.src} alt={g.cap} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
                 </div>
                 <figcaption className="font-display mt-2.5 px-1 italic">{g.cap}</figcaption>
@@ -387,24 +355,20 @@ export default function Home() {
           ))}
         </ul>
       </section>
-
-      
       </Reveal>
 
       {/* CTA */}
       <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8">
-        <div className="relative overflow-hidden spot rounded-sm border-t-4 border-gold bg-ink p-8 text-paper shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)] md:p-14">
+        <div className="relative overflow-hidden border border-ink border-t-2 border-t-goldink bg-ink p-8 text-paper md:p-14">
           <div className="max-w-2xl">
             <h2 className="font-display text-4xl font-semibold leading-tight md:text-5xl">Punya usaha? Perkenalkan ke keluarga besar alumni.</h2>
-            <p className="mt-3 text-lg">Isi formulir singkat, lihat pratinjau kartu usahamu langsung, lalu kirim untuk diverifikasi pengurus.</p>
+            <p className="mt-3 text-lg text-paper/85">Isi formulir singkat, lihat pratinjau kartu usahamu langsung, lalu kirim untuk diverifikasi pengurus.</p>
             <div className="mt-7 flex flex-wrap gap-3"><Link href="/daftar-usaha" className="btn !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha saya <Icon name="arrow" size={18} /></Link><Link href="/daftar-alumni" className="btn !border-paper text-paper hover:!bg-paper hover:text-ink">Daftar sebagai alumni</Link></div>
           </div>
-          
         </div>
       </section>
       </Reveal>
-
-      </>
+    </>
   );
 }

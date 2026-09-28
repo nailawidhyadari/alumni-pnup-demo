@@ -1,22 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Public_Sans } from "next/font/google";
+import { Public_Sans, Source_Serif_4 } from "next/font/google";
 import { Effects } from "@/components/Effects";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ToastHost } from "@/components/Toast";
 import "./globals.css";
 
-const display = Newsreader({ variable: "--font-newsreader", subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz"] });
+const display = Source_Serif_4({ variable: "--font-serif", subsets: ["latin"], style: ["normal", "italic"], weight: ["500", "600", "700"] });
 const sans = Public_Sans({ variable: "--font-public", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { default: "Marketplace Alumni IKA PNUP. Usaha sesama alumni dalam satu buku tahunan", template: "%s · IKA PNUP" },
+  title: { default: "Marketplace Alumni IKA PNUP", template: "%s · IKA PNUP" },
   description:
     "Temukan produk, jasa, dan mitra bisnis dari alumni Politeknik Negeri Ujung Pandang. Cari berdasarkan angkatan, jurusan, dan lokasi terdekat. Demo konsep desain.",
   robots: { index: false },
 };
 
-export const viewport: Viewport = { themeColor: "#0f2f2b", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#1c1a17", width: "device-width", initialScale: 1 };
 
 const initSize = `try{var p=JSON.parse(localStorage.getItem("ika-pnup-prefs-v1")||"{}");if(p.size)document.documentElement.dataset.size=p.size}catch(e){}`;
 

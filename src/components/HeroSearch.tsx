@@ -34,7 +34,7 @@ export function HeroSearch() {
   };
 
   return (
-    <form onSubmit={kirim} role="search" className="rounded-sm border border-ink bg-card p-4 shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)] sm:p-5">
+    <form onSubmit={kirim} role="search" className="rounded-sm border border-ink bg-card p-4 sm:p-5">
       <div className="grid gap-3 sm:grid-cols-[1fr_11rem]">
         <div className="relative">
           <label htmlFor="h-q" className="sr-only">Cari usaha alumni</label>

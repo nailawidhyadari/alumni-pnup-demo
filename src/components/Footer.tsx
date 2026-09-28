@@ -6,7 +6,7 @@ import { Icon } from "./Icon";
 export function Footer() {
   return (
     <footer className="mt-24 border-t-2 border-ink bg-ink text-paper">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3">
             <Image src="/img/logo-ika.png" alt="" width={56} height={56} className="h-14 w-14 rounded-full bg-paper" />

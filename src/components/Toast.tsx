@@ -19,7 +19,7 @@ export function ToastHost() {
   }, []);
   return (
     <div aria-live="polite" role="status" className="pointer-events-none fixed inset-x-0 bottom-5 z-[1200] flex justify-center px-4">
-      {msg && <div className="rise pointer-events-auto rounded-sm border border-ink bg-card px-5 py-3 text-[0.95rem] font-semibold shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)]">{msg}</div>}
+      {msg && <div className="rise pointer-events-auto rounded-sm border border-ink bg-ink px-5 py-3 text-[0.95rem] font-semibold text-paper shadow-[0_6px_16px_-4px_rgba(0,0,0,0.35)]">{msg}</div>}
     </div>
   );
 }

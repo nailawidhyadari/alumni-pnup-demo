@@ -6,7 +6,6 @@ import { Icon } from "@/components/Icon";
 import { MapLazy } from "@/components/MapLazy";
 import { Photo } from "@/components/Photo";
 import { Reviews } from "@/components/Reviews";
-import { Stamp } from "@/components/Stamp";
 import { VendorCard } from "@/components/VendorCard";
 import { VENDORS, inisial, vendorById, waLink } from "@/data/vendors";
 
@@ -33,9 +32,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <Icon name="arrowleft" size={18} /> Kembali ke daftar
       </Link>
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-[1.35fr_1fr]">
+      <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-[1.35fr_1fr]">
         <div>
-          <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink bg-paper2 shadow-[0_12px_28px_-16px_rgba(15, 47, 43,0.45)]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink">
             <Photo v={v} sizes="(min-width:1024px) 55vw, 100vw" priority />
           </div>
 
@@ -92,7 +91,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
               <span className="kicker !text-gold">Kartu alumni</span>
               <span className="text-xs tracking-widest">IKA PNUP</span>
             </div>
-            <div className="ruled relative p-5">
+            <div className="relative p-5">
               <div className="flex items-start gap-4">
                 <div aria-hidden className="font-display grid h-20 w-20 shrink-0 place-items-center rounded-full border border-ink bg-ink text-paper text-3xl font-semibold">
                   {inisial(v.pemilik.nama)}
@@ -116,7 +115,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                   <dd className="font-semibold">{v.alamat}</dd>
                 </div>
               </dl>
-              <Stamp angkatan={v.pemilik.angkatan} size={78} className="absolute bottom-4 right-4 opacity-90" />
             </div>
             <div className="space-y-3 border-t border-ink bg-card p-5">
               <a href={waLink(v)} target="_blank" rel="noreferrer" className="btn btn-wa w-full !min-h-14 text-lg">

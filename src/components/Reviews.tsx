@@ -9,7 +9,7 @@ type Ulasan = { nama: string; bintang: number; teks: string; tgl: string; sim?: 
 
 function Bintang({ n, besar = false }: { n: number; besar?: boolean }) {
   return (
-    <span className="inline-flex text-gold" aria-label={`${n} dari 5 bintang`}>
+    <span className="inline-flex text-goldink" aria-label={`${n} dari 5 bintang`}>
       {[1, 2, 3, 4, 5].map((i) => (
         <Icon key={i} name="star" size={besar ? 26 : 18} className={i <= n ? "fill-current" : "opacity-30"} />
       ))}
@@ -104,8 +104,8 @@ export function Reviews({ vendorId }: { vendorId: number }) {
             <legend className="mb-1 font-semibold">Penilaian</legend>
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
-                <button key={i} type="button" aria-pressed={bintang === i} aria-label={`${i} bintang`} onClick={() => setBintang(i)} className="grid h-12 w-12 place-items-center rounded-sm hover:bg-gold/20">
-                  <Icon name="star" size={30} className={`text-gold ${i <= bintang ? "fill-current" : ""}`} />
+                <button key={i} type="button" aria-pressed={bintang === i} aria-label={`${i} bintang`} onClick={() => setBintang(i)} className="grid h-12 w-12 place-items-center rounded-sm hover:bg-goldink/10">
+                  <Icon name="star" size={30} className={`text-goldink ${i <= bintang ? "fill-current" : ""}`} />
                 </button>
               ))}
             </div>

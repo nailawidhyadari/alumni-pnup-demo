@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /** Angka yang berhitung naik dari 0 saat pertama kali terlihat di layar. */
-export function CountUp({ to, dur = 1500, className = "" }: { to: number; dur?: number; className?: string }) {
+export function CountUp({ to, dur = 1200, className = "" }: { to: number; dur?: number; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [v, setV] = useState(to);
 
@@ -42,7 +42,7 @@ export function CountUp({ to, dur = 1500, className = "" }: { to: number; dur?: 
   );
 }
 
-/** Muncul perlahan naik saat digulir ke area layar. */
+/** Muncul pelan naik saat digulir ke area layar. */
 export function Reveal({ children, className = "", delay = 0, as: Tag = "div" }: { children: React.ReactNode; className?: string; delay?: number; as?: "div" | "section" | "li" }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -68,26 +68,5 @@ export function Reveal({ children, className = "", delay = 0, as: Tag = "div" }:
     <T ref={ref} className={className}>
       {children}
     </T>
-  );
-}
-
-export function Marquee({ items }: { items: string[] }) {
-  const row = (hidden: boolean) => (
-    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {items.map((s) => (
-        <li key={s} className="flex items-center whitespace-nowrap">
-          <span className="font-display px-7 text-xl font-medium md:text-2xl">{s}</span>
-          <span aria-hidden className="text-gold">◆</span>
-        </li>
-      ))}
-    </ul>
-  );
-  return (
-    <div className="marquee-wrap overflow-hidden" role="region" aria-label="Semboyan IKA PNUP">
-      <div className="marquee flex w-max">
-        {row(false)}
-        {row(true)}
-      </div>
-    </div>
   );
 }

@@ -15,14 +15,14 @@ export default function Page() {
   const angkatan = new Set(VENDORS.map((v) => v.pemilik.angkatan)).size;
   return (
     <>
-      <section className="border-b-2 border-ink bg-paper2">
+      <section className="border-b border-ink bg-paper2">
         <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-14">
           <nav aria-label="Jejak halaman" className="text-sm text-mute">
             <Link href="/" className="underline-offset-2 hover:underline">Beranda</Link> / Marketplace
           </nav>
           <div className="mt-3 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="kicker">Buku tahunan usaha alumni</p>
+              <p className="kicker">Direktori usaha alumni</p>
               <h1 className="font-display mt-1 text-4xl font-semibold leading-[1.05] md:text-6xl">Marketplace Alumni</h1>
               <p className="mt-3 max-w-2xl text-lg text-ink2">
                 Produk, jasa, dan bisnis dari sesama alumni. Cari lewat angkatan, jurusan, atau yang paling dekat dari tempatmu.

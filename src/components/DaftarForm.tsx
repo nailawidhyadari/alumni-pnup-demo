@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
-import { Stamp } from "./Stamp";
 import { GRUP, JURUSAN } from "@/data/vendors";
 import { KOTA } from "@/lib/geo";
 
@@ -60,7 +59,7 @@ export function DaftarForm() {
   const a11y = (k: string) => ({ id: `f-${k}`, "aria-invalid": !!err[k], "aria-describedby": err[k] ? `e-${k}` : undefined });
 
   return (
-    <form onSubmit={kirim} noValidate className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+    <form onSubmit={kirim} noValidate className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr]">
       <div className="space-y-8">
         <fieldset className="space-y-4">
           <legend className="font-display text-2xl font-semibold">1. Tentang usaha</legend>
@@ -151,24 +150,24 @@ export function DaftarForm() {
       <aside className="lg:sticky lg:top-40 lg:self-start" aria-label="Pratinjau kartu">
         <p className="kicker mb-3">Pratinjau kartu usahamu</p>
         <article className="index-card no-grow overflow-hidden">
-          <div className="relative aspect-[16/10] border-b border-ink bg-paper2">
+          <div className="relative aspect-[16/10] border-b border-ink/15 bg-paper2">
             {foto ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={foto} alt="Pratinjau foto usaha" className="h-full w-full object-cover" />
             ) : (
-              <div className="grid h-full place-items-center bg-forest text-paper/80"><span className="font-display text-xl italic">Foto usaha</span></div>
+              <div className="grid h-full place-items-center bg-ink text-paper/80"><span className="font-display text-xl">Foto usaha</span></div>
             )}
-            <span className="absolute left-0 top-3 border-y border-r border-ink bg-gold px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider">{f.grup.split(" ")[0]}</span>
-            <Stamp angkatan={Number(f.angkatan) >= 1980 ? Number(f.angkatan) : undefined} size={62} className="absolute -bottom-0.5 right-3 translate-y-1/3" />
+            <span className="absolute right-3 top-3 bg-ink px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-paper">Baru</span>
           </div>
           <div className="p-4 pt-5">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-mute">Baru · {f.grup}</p>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-wide text-mute">{f.grup}</p>
             <h3 className="font-display mt-1 text-[1.4rem] font-semibold leading-tight">{f.judul || "Judul penawaran"}</h3>
             <p className="mt-0.5 font-medium text-ink2">{f.usaha || "Nama usaha"}</p>
             <p className="mt-2 line-clamp-3 text-[0.95rem] text-ink2">{f.deskripsi || "Deskripsi singkat akan tampil di sini."}</p>
-            <p className="mt-3 flex flex-wrap gap-x-4 text-[0.9rem] text-ink2">
+            <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[0.9rem] text-ink2">
               <span className="flex items-center gap-1.5"><Icon name="pin" size={16} />{f.kota || "Kota"}</span>
               <span className="flex items-center gap-1.5"><Icon name="book" size={16} />{f.jurusan || "Jurusan"}</span>
+              {Number(f.angkatan) >= 1980 && <span className="stamp !text-[0.72rem] !py-0">Angk. <b>{f.angkatan}</b></span>}
             </p>
           </div>
         </article>

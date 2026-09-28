@@ -227,8 +227,8 @@ export function Explorer() {
       </div>
 
       {/* alumni sekitarmu */}
-      <section aria-labelledby="dekat" className="mt-6 rounded-sm border-t-4 border-gold bg-ink p-5 text-paper md:p-6">
-        <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+      <section aria-labelledby="dekat" className="mt-6 rounded-sm border-t-2 border-goldink bg-ink p-5 text-paper md:p-6">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2 id="dekat" className="font-display flex items-center gap-2.5 text-2xl font-semibold">
               <Icon name="locate" size={26} /> Alumni sekitarmu
@@ -293,7 +293,7 @@ export function Explorer() {
         })}
       </div>
 
-      <div className="mt-6 grid gap-8 lg:grid-cols-[17.5rem_1fr]">
+      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[17.5rem_1fr]">
         {/* filter */}
         <aside className="lg:sticky lg:top-40 lg:self-start">
           <button type="button" className="btn btn-line w-full lg:hidden" aria-expanded={filterBuka} onClick={() => setFilterBuka(!filterBuka)}>

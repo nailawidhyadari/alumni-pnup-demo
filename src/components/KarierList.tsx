@@ -55,7 +55,7 @@ export function KarierList() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap gap-2 text-[0.78rem] font-bold uppercase tracking-wider">
-                    <span className="rounded-sm bg-forest px-2.5 py-0.5 text-white">{l.tipe}</span>
+                    <span className="rounded-sm bg-ink px-2.5 py-0.5 text-white">{l.tipe}</span>
                     <span className="rounded-sm border border-ink/40 px-2.5 py-0.5">{l.pendidikan.join(" / ")}</span>
                     <span className="py-0.5 text-mute">{l.posted}</span>
                   </div>
@@ -93,7 +93,7 @@ export function KarierList() {
                     <ol className="mt-2 space-y-2">
                       {l.skill.map((s, i) => (
                         <li key={s} className="flex gap-3">
-                          <span className="font-display w-6 shrink-0 text-xl font-semibold italic text-stamp">{i + 1}</span>
+                          <span className="font-display w-6 shrink-0 text-xl font-semibold text-goldink">{i + 1}</span>
                           {s}
                         </li>
                       ))}
@@ -113,7 +113,7 @@ export function KarierList() {
         <ol className="mt-6 grid gap-4 md:grid-cols-5">
           {ALUR_LAMAR.map((a, i) => (
             <li key={a.judul} className="relative rounded-sm border border-ink bg-card p-4">
-              <span className="font-display text-4xl font-semibold text-gold">{i + 1}</span>
+              <span className="font-display text-4xl font-semibold text-goldink">{i + 1}</span>
               <p className="mt-1 font-bold">{a.judul}</p>
               <p className="mt-1 text-[0.92rem] text-ink2">{a.isi}</p>
             </li>

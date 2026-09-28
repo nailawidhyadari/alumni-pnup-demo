@@ -5,9 +5,8 @@ import { inisial } from "@/data/vendors";
 export function Photo({ v, sizes, priority = false }: { v: Pick<Vendor, "foto" | "fit" | "usaha" | "judul" | "id">; sizes: string; priority?: boolean }) {
   if (!v.foto) {
     return (
-      <div className="absolute inset-0 grid place-items-center bg-forest text-paper" role="img" aria-label={`Foto ${v.usaha} belum tersedia`}>
-        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.5) 14px 15px)" }} />
-        <span className="font-display relative text-7xl font-semibold italic">{inisial(v.usaha)}</span>
+      <div className="absolute inset-0 grid place-items-center bg-ink text-paper" role="img" aria-label={`Foto ${v.usaha} belum tersedia`}>
+        <span className="font-display text-6xl font-semibold">{inisial(v.usaha)}</span>
       </div>
     );
   }
@@ -20,7 +19,7 @@ export function Photo({ v, sizes, priority = false }: { v: Pick<Vendor, "foto" |
         fill
         sizes={sizes}
         priority={priority}
-        className={`transition-transform duration-700 ease-out group-hover:scale-110 ${v.fit === "cover" ? "object-cover" : "object-contain p-4"}`}
+        className={`transition-transform duration-500 ease-out group-hover:scale-105 ${v.fit === "cover" ? "object-cover" : "object-contain p-4"}`}
       />
     </>
   );

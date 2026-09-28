@@ -12,7 +12,7 @@ const NILAI = ["Integritas", "Kolaborasi", "Kontribusi", "Inovasi", "Kebersamaan
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-8 lg:py-16">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto]">
         <div>
           <p className="kicker">Tentang kami</p>
           <h1 className="font-display mt-1 text-4xl font-semibold leading-tight md:text-6xl">Satu almamater, satu keluarga besar</h1>
@@ -52,8 +52,8 @@ export default function Page() {
         <h2 id="nilai" className="font-display text-3xl font-semibold">Lima nilai kami</h2>
         <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {NILAI.map((n, i) => (
-            <li key={n} className="rounded-sm border border-ink bg-gold/30 p-4">
-              <span className="font-display text-3xl font-semibold italic text-stamp">{i + 1}</span>
+            <li key={n} className="rounded-sm border border-ink bg-gold/25 p-4">
+              <span className="font-display text-3xl font-semibold text-goldink">{i + 1}</span>
               <p className="font-display text-xl font-semibold">{n}</p>
             </li>
           ))}
@@ -80,7 +80,7 @@ export default function Page() {
       </section>
 
       <div className="mt-16 rounded-sm border border-ink bg-ink p-8 text-paper md:p-10">
-        <p className="font-display text-3xl font-semibold italic">Ingin ikut berkontribusi?</p>
+        <p className="font-display text-3xl font-semibold">Ingin ikut berkontribusi?</p>
         <p className="mt-2 max-w-xl text-paper/80">Perkenalkan usahamu ke keluarga besar alumni, atau kabari kami lewat {ORG.email}.</p>
         <Link href="/daftar-usaha" className="btn mt-5 !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha</Link>
       </div>
