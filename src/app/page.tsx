@@ -5,10 +5,9 @@ import { Icon } from "@/components/Icon";
 import { Kta } from "@/components/Kta";
 import { MapLazy } from "@/components/MapLazy";
 import { CountUp, Reveal } from "@/components/Motion";
-import { Photo } from "@/components/Photo";
 import { VendorCard } from "@/components/VendorCard";
 import { AGENDA, BERITA, GALERI, LOWONGAN, ORG, PENGURUS_INTI, TOTAL_PENGURUS } from "@/data/site";
-import { GRUP, VENDORS, vendorById } from "@/data/vendors";
+import { GRUP, VENDORS } from "@/data/vendors";
 
 const ROMAWI = ["I", "II", "III", "IV", "V"];
 
@@ -34,7 +33,6 @@ function Judul({ kicker, judul, href, label }: { kicker: string; judul: string; 
 }
 
 export default function Home() {
-  const unggulan = vendorById(12)!;
   const kota = [...VENDORS.reduce((m, v) => m.set(v.kota, (m.get(v.kota) ?? 0) + 1), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
   const angkatan = [...VENDORS.reduce((m, v) => (v.pemilik.angkatan ? m.set(v.pemilik.angkatan, (m.get(v.pemilik.angkatan) ?? 0) + 1) : m), new Map<number, number>())].sort((a, b) => a[0] - b[0]);
   const baru = VENDORS.slice(0, 6);
@@ -42,33 +40,24 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="border-b border-ink">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8 lg:py-16">
-          <div>
-            <p className="kicker rise">Marketplace resmi keluarga besar alumni</p>
-            <h1 className="rise font-display mt-3 text-[2.6rem] font-semibold leading-[1.08] tracking-tight md:text-6xl" style={{ animationDelay: "80ms" }}>
+      <section className="relative flex min-h-[34rem] items-center overflow-hidden border-b border-ink lg:min-h-[38rem]">
+        <div className="absolute inset-0">
+          <Image src="/img/news/foto-bersama.jpg" alt="" fill priority sizes="100vw" className="object-cover object-top" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,25,30,.82)_0%,rgba(23,25,30,.72)_45%,rgba(23,25,30,.88)_100%)]" />
+        </div>
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="kicker rise !text-gold">Marketplace resmi keluarga besar alumni</p>
+            <h1 className="rise font-display mt-3 text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-paper md:text-6xl" style={{ animationDelay: "80ms" }}>
               Beli, pesan, dan bermitra dengan sesama alumni PNUP.
             </h1>
-            <p className="rise mt-5 max-w-xl text-lg text-ink2 md:text-xl" style={{ animationDelay: "160ms" }}>
+            <p className="rise mt-5 max-w-xl text-lg text-paper/85 md:text-xl" style={{ animationDelay: "160ms" }}>
               Dari kontraktor sampai abon ikan, dari layanan internet sampai paket umrah. Semua dijalankan lulusan kampus yang sama. Kenali usahanya, lihat angkatannya, lalu hubungi langsung.
             </p>
             <div className="rise mt-8 max-w-xl" style={{ animationDelay: "240ms" }}>
               <HeroSearch />
             </div>
           </div>
-
-          <Link href={`/marketplace/${unggulan.id}`} className="rise group block" style={{ animationDelay: "200ms" }} aria-label={`Contoh usaha alumni: ${unggulan.judul}`}>
-            <div className="relative aspect-[4/5] overflow-hidden border border-ink sm:aspect-[5/4] lg:aspect-[4/5]">
-              <Photo v={unggulan} sizes="(min-width:1024px) 40vw, 90vw" priority />
-            </div>
-            <div className="flex items-baseline justify-between gap-3 border-x border-b border-ink px-4 py-3">
-              <div className="min-w-0">
-                <p className="text-[0.72rem] font-bold uppercase tracking-wider text-mute">{unggulan.kota} · {unggulan.pemilik.jurusan}</p>
-                <p className="font-display mt-0.5 truncate text-lg font-semibold group-hover:underline">{unggulan.judul}</p>
-              </div>
-              <span className="stamp shrink-0">Angk. <b>{unggulan.pemilik.angkatan}</b></span>
-            </div>
-          </Link>
         </div>
       </section>
 
