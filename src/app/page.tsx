@@ -45,7 +45,7 @@ export default function Home() {
           <Image src="/img/news/foto-bersama.jpg" alt="" fill priority sizes="100vw" className="object-cover object-top" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,25,30,.82)_0%,rgba(23,25,30,.72)_45%,rgba(23,25,30,.88)_100%)]" />
         </div>
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-16 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-2xl">
             <p className="kicker rise !text-gold">Marketplace resmi keluarga besar alumni</p>
             <h1 className="rise font-display mt-3 text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-paper md:text-6xl" style={{ animationDelay: "80ms" }}>
@@ -58,11 +58,25 @@ export default function Home() {
               <HeroSearch />
             </div>
           </div>
+
+          <dl className="rise hidden shrink-0 grid-cols-2 gap-x-8 gap-y-6 border border-ink bg-card px-7 py-6 lg:grid" style={{ animationDelay: "300ms" }} aria-label="Ringkasan marketplace">
+            {[
+              [VENDORS.length, "usaha alumni"],
+              [angkatan.length, "angkatan tercatat"],
+              [kota.length, "kota & kabupaten"],
+              [TOTAL_PENGURUS, "pengurus periode ini"],
+            ].map(([n, l]) => (
+              <div key={l as string}>
+                <dd className="font-display text-4xl font-semibold text-ink"><CountUp to={n as number} /></dd>
+                <dt className="mt-1 text-[0.85rem] text-mute">{l}</dt>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* ANGKA */}
-      <section className="border-b border-ink border-t-2 border-t-goldink bg-ink text-paper" aria-label="Ringkasan">
+      {/* ANGKA (hp & tablet; di layar besar sudah tampil di dalam hero) */}
+      <section className="border-b border-ink border-t-2 border-t-goldink bg-ink text-paper lg:hidden" aria-label="Ringkasan">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 px-4 py-10 text-center md:grid-cols-4 lg:px-8">
           {[
             [VENDORS.length, "usaha alumni"],
@@ -71,7 +85,7 @@ export default function Home() {
             [TOTAL_PENGURUS, "pengurus periode ini"],
           ].map(([n, l]) => (
             <div key={l as string}>
-              <dd className="font-display text-5xl font-semibold md:text-6xl"><CountUp to={n as number} /></dd>
+              <dd className="font-display text-5xl font-semibold"><CountUp to={n as number} /></dd>
               <dt className="mt-1 text-paper/75">{l}</dt>
             </div>
           ))}
@@ -349,11 +363,14 @@ export default function Home() {
       {/* CTA */}
       <Reveal>
       <section className="mx-auto max-w-7xl px-4 pt-24 lg:px-8">
-        <div className="relative overflow-hidden border border-ink border-t-2 border-t-goldink bg-ink p-8 text-paper md:p-14">
-          <div className="max-w-2xl">
+        <div className="grid grid-cols-1 overflow-hidden border border-ink border-t-2 border-t-goldink bg-ink text-paper lg:grid-cols-[1.3fr_1fr]">
+          <div className="p-8 md:p-14">
             <h2 className="font-display text-4xl font-semibold leading-tight md:text-5xl">Punya usaha? Perkenalkan ke keluarga besar alumni.</h2>
             <p className="mt-3 text-lg text-paper/85">Isi formulir singkat, lihat pratinjau kartu usahamu langsung, lalu kirim untuk diverifikasi pengurus.</p>
             <div className="mt-7 flex flex-wrap gap-3"><Link href="/daftar-usaha" className="btn !border-paper !bg-paper text-ink hover:!bg-gold">Daftarkan usaha saya <Icon name="arrow" size={18} /></Link><Link href="/daftar-alumni" className="btn !border-paper text-paper hover:!bg-paper hover:text-ink">Daftar sebagai alumni</Link></div>
+          </div>
+          <div className="relative min-h-64 border-t border-paper/15 lg:min-h-0 lg:border-l lg:border-t-0">
+            <Image src="/img/vendor/12.png" alt="" fill sizes="(min-width:1024px) 30vw, 100vw" className="object-cover" />
           </div>
         </div>
       </section>
